@@ -3,7 +3,7 @@ nav
     flex-direction: column
     justify-content: space-between
     position: fixed
-    z-index: 2
+    z-index: 3
     top: 0
     left: -50%
     width: 50%
@@ -12,6 +12,7 @@ nav
     background: $highlight
     box-shadow: 0px 0px 95px 0px rgba(10, 15, 20, 0.25)
     color: $white !important
+    transition: all .35s ease-in-out
     &.show
         left: 0
     .top
@@ -42,7 +43,17 @@ nav
         &:hover
             h2
                 color: $dark
-            .button
-                background: $dark
+        &:active
+            transform: scale(.99)
+            h2
+                margin-right: 60/$dfs+rem
+                color: $highlight
+        &:hover .button, &:focus .button
+            background: $dark
+            transform: translateY(-1px)
+            box-shadow: 0px 7px 95px 0px rgba(10, 15, 20, 0.4)
+        &:active .button
+            transform: translateY(1px)
+            box-shadow: 0px 7px 95px 0px rgba(10, 15, 20, 0.45)
         h2
             padding-right: 60/$dfs+rem

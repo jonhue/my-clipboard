@@ -1,0 +1,15 @@
+header
+    #nav-open(onClick="toggleMenu();")
+        include ../icons/_menu.html
+    .wrapper
+        include ../icons/_clipboard.html
+        button.big.negative Clear Clipboard
+    section#bar
+        #up.wrapper.hide(onClick="up();")
+            .button
+                include ../icons/_arrow_up.html
+            h2 Clear Clipboard
+        #down.wrapper(onClick="down();")
+            .button
+                include ../icons/_arrow_down.html
+            h2 History

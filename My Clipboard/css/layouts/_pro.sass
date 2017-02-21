@@ -1,14 +1,54 @@
 #pro
-    display: flex
-    align-items: center
     width: 100%
-    padding: 70/$dfs+rem
+    height: 20px
     background: rgba($white, .8)
     cursor: pointer
-    transform: none
-    &:active
+    transition: all .75s ease-in-out
+    &.fullPage
+        position: relative
+        z-index: 4
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 100vh
+        max-height: 100vh
+        background: rgba($white, .9)
+        cursor: default
+        &:active > .wrapper
+            transform: none
+        .top > .wrapper
+            margin-left: 50/$dfs+rem !important
+    &:active > .wrapper
         transform: scale(.99)
-    .wrapper
-        margin-left: 90/$dfs+rem
-        h3
-            margin-bottom: 15/$dfs+rem
+    .middle, .bottom
+        display: none
+    & > .wrapper
+        transform: none
+        .top
+            display: flex
+            align-items: center
+            padding: 75/$dfs+rem calc(#{$bar-padding}px + 30px - 26px)
+            & > .wrapper
+                margin-left: 90/$dfs+rem
+                h3
+                    margin-bottom: 15/$dfs+rem
+        .middle
+            max-width: 600/$dfs+rem
+            padding: 0 calc(#{$bar-padding}px + 30px - 26px)
+        .bottom
+            padding: 80/$dfs+rem calc(#{$bar-padding}px + 30px - 26px)
+            & > .wrapper
+                display: flex
+                flex-direction: row-reverse
+                align-items: center
+                #pro-close
+                    position: fixed
+                    top: 45/$dfs+rem
+                    right: 45/$dfs+rem
+                    opacity: .8
+                    cursor: pointer
+                    &:hover, &:focus
+                        opacity: 1
+                    svg
+                        line
+                            stroke: $dark

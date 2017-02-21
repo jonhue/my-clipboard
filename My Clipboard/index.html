@@ -1,16 +1,16 @@
-<!DOCTYPE html5><html><head><meta charset="utf-8"/><title>My Clipboard</title><link href="css/default.min.css" rel="stylesheet"/><link href="css/resources/normalize/normalize.min.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/></head><body><div id="app-wrapper"><section id="rate"></section><nav class="show"><div class="top"><div id="topbar"><div id="nav-close"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="45px" height="45px" viewBox="0 0 48 48">
+<!DOCTYPE html5><html><head><meta charset="utf-8"/><title>My Clipboard</title><link href="css/default.min.css" rel="stylesheet"/><link href="css/resources/normalize/normalize.min.css" rel="stylesheet"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/></head><body><div id="app-wrapper"><nav><div class="top"><div id="topbar"><div id="nav-close" onClick="toggleMenu();"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="45px" height="45px" viewBox="0 0 48 48">
     <g transform="translate(0, 0)">
         <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="38" y1="10" x2="10" y2="38" stroke-linejoin="miter"></line>
         <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="38" y1="38" x2="10" y2="10" stroke-linejoin="miter"></line>
     </g>
 </svg>
-</div><div id="version"><p class="small">Version 1.2.6.13</p></div></div><div id="navigation"><h1>My Clipboard</h1><h1>Pro</h1></div></div><div class="bottom"><div class="button negative"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 48 48">
+</div><div id="version"><p class="small">Version 1.2.6.13</p></div></div><div id="navigation"><h1 onClick="toggleMenu();up();">My Clipboard</h1><h1 onClick="toggleMenu();openPro();">Pro</h1></div></div><div class="bottom"><div class="button negative"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 48 48">
     <g transform="translate(0, 0)">
         <line data-cap="butt" data-color="color-2" fill="none" stroke="#fd3365" stroke-width="3" stroke-miterlimit="10" x1="2" y1="24" x2="45" y2="24" stroke-linejoin="miter" stroke-linecap="butt"></line>
         <polyline fill="none" stroke="#fd3365" stroke-width="3" stroke-linecap="square" stroke-miterlimit="10" points="31,10 45,24 31,38 " stroke-linejoin="miter"></polyline>
     </g>
 </svg>
-</div><h2>Review this App</h2></div></nav><div id="layout-wrapper" class="hide">      <header><div id="nav-open"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="45px" height="45px" viewBox="0 0 48 48">
+</div><h2>Review this App</h2></div></nav><div id="layout-wrapper"><header><div id="nav-open" onClick="toggleMenu();"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="45px" height="45px" viewBox="0 0 48 48">
     <g transform="translate(0, 0)">
         <line data-color="color-2" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="2" y1="24" x2="46" y2="24" stroke-linejoin="miter"></line>
         <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="24" y1="10" x2="46" y2="10" stroke-linejoin="miter"></line>
@@ -24,21 +24,33 @@
         <path fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="square" stroke-miterlimit="10" d="M29,7c0-2.761-2.239-5-5-5 s-5,2.239-5,5h-4v6h18V7H29z" stroke-linejoin="miter"></path>
     </g>
 </svg>
-<button class="big negative">Clear Clipboard</button></div><section id="bar"><div class="button"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 48 48">
+<button class="big negative">Clear Clipboard</button></div><section id="bar"><div id="up" onClick="up();" class="wrapper hide"><div class="button"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 48 48">
+    <g transform="translate(0, 0)">
+        <line data-cap="butt" data-color="color-2" fill="none" stroke="#ffffff" stroke-width="3" stroke-miterlimit="10" x1="24" y1="46" x2="24" y2="3" stroke-linejoin="miter" stroke-linecap="butt"></line>
+        <polyline fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="10" points="38,17 24,3 10,17 " stroke-linejoin="miter"></polyline>
+    </g>
+</svg>
+</div><h2>Clear Clipboard</h2></div><div id="down" onClick="down();" class="wrapper"><div class="button"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 48 48">
     <g transform="translate(0, 0)">
         <line data-cap="butt" data-color="color-2" fill="none" stroke="#ffffff" stroke-width="3" stroke-miterlimit="10" x1="24" y1="2" x2="24" y2="45" stroke-linejoin="miter" stroke-linecap="butt"></line>
         <polyline fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="square" stroke-miterlimit="10" points="10,31 24,45 38,31 " stroke-linejoin="miter"></polyline>
     </g>
 </svg>
-</div><h2>History</h2></section></header><section id="history"><div class="item"><time>10:34 AM</time><p class="large">SO67JHX908kJHDB</p></div><div class="item"><time>10:34 AM</time><p class="large">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p></div><div id="more-arrow"><svg style="transform: rotate(90deg);" class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 48 48">
+</div><h2>History</h2></div></section></header><section id="history"><div class="item"><time>10:34 AM</time><p class="large">SO67JHX908kJHDB</p></div><div class="item"><time>10:34 AM</time><p class="large">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p></div><div class="item"><time>10:34 AM</time><p class="large">SO67JHX908kJHDB</p></div><div class="item"><time>10:34 AM</time><p class="large">SO67JHX908kJHDB</p></div><div class="item"><time>10:34 AM</time><p class="large">SO67JHX908kJHDB</p></div><div id="more-arrow" onClick="openPro();"><svg style="transform: rotate(90deg);" class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewBox="0 0 48 48">
     <g transform="translate(0, 0)">
-        <polyline fill="none" stroke="#d3d3d6" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="8,4 28,24 8,44 " stroke-linejoin="miter"></polyline>
-        <polyline fill="none" stroke="#d3d3d6" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="20,4 40,24 20,44 " stroke-linejoin="miter"></polyline>
+        <polyline fill="none" stroke="#c8c8cd" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="8,4 28,24 8,44 " stroke-linejoin="miter"></polyline>
+        <polyline fill="none" stroke="#c8c8cd" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" points="20,4 40,24 20,44 " stroke-linejoin="miter"></polyline>
     </g>
 </svg>
-</div></section><section id="pro"><svg class="nc-icon glyph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="52px" height="52px" viewBox="0 0 48 48">
+</div></section><section id="pro"><div class="wrapper"><div onClick="openPro();" class="top"><svg class="nc-icon glyph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="52px" height="52px" viewBox="0 0 48 48">
     <g>
         <path fill="#fd3365" d="M34,2c-3.896,0-7.541,1.734-10,4.698C21.541,3.734,17.896,2,14,2C6.832,2,1,7.832,1,15 c0,12.332,21.453,30.027,22.367,30.774C23.551,45.925,23.775,46,24,46s0.449-0.075,0.633-0.226C25.547,45.027,47,27.332,47,15 C47,7.832,41.168,2,34,2z"></path>
     </g>
 </svg>
-<div class="wrapper"><h3>Give yourself Pro</h3><p class="small">you get a longer history with My Clipboard Pro</p></div></section></div></div><script src="js/resources/jquery.min.js"></script><script src="js/main.js"></script></body></html>
+<div class="wrapper"><h3>Give yourself Pro</h3><p class="small">you get a longer history with My Clipboard Pro</p></div></div><div class="middle"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p></div><div class="bottom"><div class="wrapper"><button>Buy</button><div id="pro-close" onClick="closePro();"><svg class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="45px" height="45px" viewBox="0 0 48 48">
+    <g transform="translate(0, 0)">
+        <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="38" y1="10" x2="10" y2="38" stroke-linejoin="miter"></line>
+        <line fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" x1="38" y1="38" x2="10" y2="10" stroke-linejoin="miter"></line>
+    </g>
+</svg>
+</div></div></div></div></section></div></div><script src="js/resources/jquery/jquery-3.1.1.min.js"></script><script src="js/resources/scrollmagic/minified/ScrollMagic.min.js"></script><script src="js/main.js"></script><script src="js/layout.js"></script></body></html>

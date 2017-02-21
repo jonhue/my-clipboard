@@ -1,5 +1,6 @@
 //- out: .
 //- app/jade
+//- app/layouts/_header.jade
 //- app/icons/html
 
 doctype html5
@@ -13,6 +14,8 @@ html
     body
         #app-wrapper
             include app/_app.jade
-
+            
         script(src="js/resources/jquery/jquery-3.1.1.min.js")
+        script(src="js/resources/scrollmagic/minified/ScrollMagic.min.js")
         script(src="js/main.js")
+        script(src="js/layout.js")

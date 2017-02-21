@@ -1,0 +1,14 @@
+nav
+    .top
+        #topbar
+            #nav-close(onClick="toggleMenu();")
+                include ../icons/_close.html
+            #version
+                p.small Version 1.2.6.13
+        #navigation
+            h1(onClick="toggleMenu();up();") My Clipboard
+            h1(onClick="toggleMenu();openPro();") Pro
+    .bottom
+        .button.negative
+            include ../icons/_arrow_right.html
+        h2 Review this App
