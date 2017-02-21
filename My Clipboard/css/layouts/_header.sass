@@ -15,6 +15,10 @@ header
         top: 60/$dfs+rem
         left: 70/$dfs+rem
         cursor: pointer
+        &:hover
+            svg
+                line
+                    stroke: $dark
     #bar
         display: flex
         flex-direction: row-reverse
@@ -26,6 +30,14 @@ header
         padding: $bar-padding/$dfs+rem
         background: rgba($white, .8)
         cursor: pointer
+        transform: none
+        &:hover
+            h2
+                color: $dark
+            .button
+                background: $dark
+        &:active
+            transform: scale(.99)
         h2
             margin-right: 60/$dfs+rem
             color: $highlight

@@ -1,26 +1,46 @@
 section#rate
 
-nav
+nav.show
+    .top
+        #topbar
+            #nav-close
+                include icons/_close.html
+            #version
+                p.small Version 1.2.6.13
+        #navigation
+            h1 My Clipboard
+            h1 Pro
+    .bottom
+        .button.negative
+            include icons/_arrow_right.html
+        h2 Review this App
+        
 
-header
-    #nav-open
-        include icons/_menu.html
-    .wrapper
-        include icons/_clipboard.html
-        button.big.negative Clear Clipboard
-    section#bar
-        .button
-            include icons/_arrow_down.html
-        h2 History
+#layout-wrapper.hide       
 
-section#history
-    .item
-        time 10:34 AM
-        p.large SO67JHX908kJHDB
-    .item
-        time 10:34 AM
-        p.large Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-    #more-arrow
-        include icons/_more_arrow.html
+    header
+        #nav-open
+            include icons/_menu.html
+        .wrapper
+            include icons/_clipboard.html
+            button.big.negative Clear Clipboard
+        section#bar
+            .button
+                include icons/_arrow_down.html
+            h2 History
 
-section#pro
+    section#history
+        .item
+            time 10:34 AM
+            p.large SO67JHX908kJHDB
+        .item
+            time 10:34 AM
+            p.large Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        #more-arrow
+            include icons/_more_arrow.html
+
+    section#pro
+        include icons/_heart.html
+        .wrapper
+            h3 Give yourself Pro
+            p.small you get a longer history with My Clipboard Pro

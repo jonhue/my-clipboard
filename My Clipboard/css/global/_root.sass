@@ -7,6 +7,7 @@
     transition: all .15s ease-in-out
 
 html
+    z-index: 1
     font-size: $dfs+px
     font-family: 'Open Sans', 'Helvetica Neue', 'Roboto', 'Lato', 'Source Sans Pro', Helvetica, sans-serif !important
     font-weight: 400
@@ -21,3 +22,8 @@ html
     overflow-x: hidden
     overflow-y: auto
     user-select: none
+
+#layout-wrapper
+    margin: 0
+    &.hide
+        margin-left: 50%
