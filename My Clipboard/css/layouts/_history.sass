@@ -1,3 +1,24 @@
 #history
     width: 100%
-    padding: 100/$dfs+rem
+    min-height: calc(100vh - 2*#{$bar-padding}px - 60px)
+    .item
+        display: flex
+        align-items: flex-start
+        max-width: 100%
+        padding-bottom: 50/$dfs+rem
+        margin: 0 ($bar-padding/$dfs+30/$dfs)+rem
+        border-left: solid 2px $light
+        &:first-child
+            padding-top: 100/$dfs+rem
+        &:last-child
+            padding-bottom: 250/$dfs+rem
+        time
+            width: 100/$dfs+rem
+            min-width: 100/$dfs+rem
+            margin-left: 20/$dfs+rem
+        p.large
+            user-select: auto
+    #more-arrow
+        width: 48px
+        margin: 25/$dfs+rem calc(#{$bar-padding}px + 30px - 24px) 75/$dfs+rem
+        cursor: pointer

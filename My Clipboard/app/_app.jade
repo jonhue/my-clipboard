@@ -3,14 +3,24 @@ section#rate
 nav
 
 header
-    include icons/_menu.html
-    include icons/_clipboard.html
-    button.big.negative Clear Clipboard
+    #nav-open
+        include icons/_menu.html
+    .wrapper
+        include icons/_clipboard.html
+        button.big.negative Clear Clipboard
     section#bar
-        h2 History
         .button
             include icons/_arrow_down.html
+        h2 History
 
 section#history
+    .item
+        time 10:34 AM
+        p.large SO67JHX908kJHDB
+    .item
+        time 10:34 AM
+        p.large Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+    #more-arrow
+        include icons/_more_arrow.html
 
 section#pro
