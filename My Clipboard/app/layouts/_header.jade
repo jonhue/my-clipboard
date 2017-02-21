@@ -3,7 +3,7 @@ header
         include ../icons/_menu.html
     .wrapper
         include ../icons/_clipboard.html
-        button.big.negative Clear Clipboard
+        button.big.negative(onClick="clearClipboard();") Clear Clipboard
     section#bar
         #up.wrapper.hide(onClick="up();")
             .button
