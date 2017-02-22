@@ -2,6 +2,32 @@ if (window.jQuery) {
 
     var barTop = $('section#bar').offset().top;
 
+    function fixBar() {
+        if ($(window).scrollTop() > barTop) {
+            if ($('nav').hasClass('show')) {
+                $('section#bar').css({position: 'fixed', top: '0', width: '50%'});
+            } else {
+                $('section#bar').css({position: 'fixed', top: '0', width: '100%'});
+            };
+        } else {
+            $('section#bar').css({position: 'relative', top: '0', width: '100%'});
+        };
+    };
+
+    function transformBar() {
+        if ($(window).scrollTop() < barTop - 1) {
+            $('header').removeClass('dark');
+            $('#bar').removeClass('dark');
+            $('#down').removeClass('hide');
+            $('#up').addClass('hide');
+        } else if ($(window).scrollTop() > barTop - 1) {
+            $('header').addClass('dark');
+            $('#bar').addClass('dark');
+            $('#down').addClass('hide');
+            $('#up').removeClass('hide');
+        };
+    };
+
     function toggleMenu() {
         $('nav').toggleClass('show');
         $('#layout-wrapper').toggleClass('hide');

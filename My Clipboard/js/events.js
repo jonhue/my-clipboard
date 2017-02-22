@@ -1,30 +1,16 @@
 $(document).ready(function() {
     if (window.jQuery) {
 
-        $(window).scroll(function(){
-            if ($(window).scrollTop() > barTop) {
-                if ($('nav').hasClass('show')) {
-                    $('section#bar').css({position: 'fixed', top: '0', width: '50%'});
-                } else {
-                    $('section#bar').css({position: 'fixed', top: '0', width: '100%'});
-                };
-            } else {
-                $('section#bar').css({position: 'relative', top: '0', width: '100%'});
-            };
+        fixBar();
+        transformBar();
+
+        $(window).resize(function() {
+            location.reload();
         });
 
         $(window).scroll(function(){
-            if ($(window).scrollTop() < barTop - 1) {
-                $('header').removeClass('dark');
-                $('#bar').removeClass('dark');
-                $('#down').removeClass('hide');
-                $('#up').addClass('hide');
-            } else if ($(window).scrollTop() > barTop - 1) {
-                $('header').addClass('dark');
-                $('#bar').addClass('dark');
-                $('#down').addClass('hide');
-                $('#up').removeClass('hide');
-            };
+            fixBar();
+            transformBar();
         });
 
         // $(window).scroll(function(){
