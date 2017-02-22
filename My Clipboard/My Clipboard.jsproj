@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Uap.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Uap.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -39,6 +41,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>1637d46d-fbd7-470c-a9fd-b91b7369fa5e</ProjectGuid>
+    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0'">
@@ -52,13 +55,132 @@
     <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>$(VersionNumberMajor).$(VersionNumberMinor)</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>My Clipboard_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>My Clipboard_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>69EBCF57DFA292B8BBFFE215F637058B7633856F</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include=".sass-cache\aad23147d06de796e3f57d2ddbd16d2c17c04a21\default.sassc" />
+    <Content Include="app\icons\_arrow_down.html" />
+    <Content Include="app\icons\_arrow_right.html" />
+    <Content Include="app\icons\_arrow_up.html" />
+    <Content Include="app\icons\_clipboard.html" />
+    <Content Include="app\icons\_close.html" />
+    <Content Include="app\icons\_heart.html" />
+    <Content Include="app\icons\_menu.html" />
+    <Content Include="app\icons\_more_arrow.html" />
+    <Content Include="app\layouts\_header.jade" />
+    <Content Include="app\layouts\_history.jade" />
+    <Content Include="app\layouts\_nav.jade" />
+    <Content Include="app\layouts\_pro.jade" />
+    <Content Include="app\_app.jade" />
+    <Content Include="bin\Debug\AppxManifest.xml" />
+    <Content Include="bin\Debug\AppX\AppxManifest.xml" />
+    <Content Include="bin\Debug\AppX\Content\normalize.css" />
+    <Content Include="bin\Debug\AppX\css\default.css" />
+    <Content Include="bin\Debug\AppX\images\BadgeLogo.scale-100.png" />
+    <Content Include="bin\Debug\AppX\images\BadgeLogo.scale-125.png" />
+    <Content Include="bin\Debug\AppX\images\BadgeLogo.scale-150.png" />
+    <Content Include="bin\Debug\AppX\images\BadgeLogo.scale-200.png" />
+    <Content Include="bin\Debug\AppX\images\BadgeLogo.scale-400.png" />
+    <Content Include="bin\Debug\AppX\images\LargeTile.scale-100.png" />
+    <Content Include="bin\Debug\AppX\images\LargeTile.scale-125.png" />
+    <Content Include="bin\Debug\AppX\images\LargeTile.scale-150.png" />
+    <Content Include="bin\Debug\AppX\images\LargeTile.scale-200.png" />
+    <Content Include="bin\Debug\AppX\images\LargeTile.scale-400.png" />
+    <Content Include="bin\Debug\AppX\images\LockScreenLogo.scale-200.png" />
+    <Content Include="bin\Debug\AppX\images\SmallTile.scale-100.png" />
+    <Content Include="bin\Debug\AppX\images\SmallTile.scale-125.png" />
+    <Content Include="bin\Debug\AppX\images\SmallTile.scale-150.png" />
+    <Content Include="bin\Debug\AppX\images\SmallTile.scale-200.png" />
+    <Content Include="bin\Debug\AppX\images\SmallTile.scale-400.png" />
+    <Content Include="bin\Debug\AppX\images\splashscreen.scale-100.png" />
+    <Content Include="bin\Debug\AppX\images\splashscreen.scale-125.png" />
+    <Content Include="bin\Debug\AppX\images\splashscreen.scale-150.png" />
+    <Content Include="bin\Debug\AppX\images\SplashScreen.scale-200.png" />
+    <Content Include="bin\Debug\AppX\images\splashscreen.scale-400.png" />
+    <Content Include="bin\Debug\AppX\images\Square150x150Logo.scale-100.png" />
+    <Content Include="bin\Debug\AppX\images\Square150x150Logo.scale-125.png" />
+    <Content Include="bin\Debug\AppX\images\Square150x150Logo.scale-150.png" />
+    <Content Include="bin\Debug\AppX\images\Square150x150Logo.scale-200.png" />
+    <Content Include="bin\Debug\AppX\images\Square150x150Logo.scale-400.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.scale-100.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.scale-125.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.scale-150.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.scale-200.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.scale-400.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.targetsize-16.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.targetsize-24.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.targetsize-256.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.targetsize-32.png" />
+    <Content Include="bin\Debug\AppX\images\Square44x44Logo.targetsize-48.png" />
+    <Content Include="bin\Debug\AppX\images\StoreLogo.png" />
+    <Content Include="bin\Debug\AppX\images\storelogo.scale-100.png" />
+    <Content Include="bin\Debug\AppX\images\storelogo.scale-125.png" />
+    <Content Include="bin\Debug\AppX\images\storelogo.scale-150.png" />
+    <Content Include="bin\Debug\AppX\images\storelogo.scale-200.png" />
+    <Content Include="bin\Debug\AppX\images\storelogo.scale-400.png" />
+    <Content Include="bin\Debug\AppX\images\Wide310x150Logo.scale-100.png" />
+    <Content Include="bin\Debug\AppX\images\Wide310x150Logo.scale-125.png" />
+    <Content Include="bin\Debug\AppX\images\Wide310x150Logo.scale-150.png" />
+    <Content Include="bin\Debug\AppX\images\Wide310x150Logo.scale-200.png" />
+    <Content Include="bin\Debug\AppX\images\Wide310x150Logo.scale-400.png" />
+    <Content Include="bin\Debug\AppX\index.html" />
+    <Content Include="bin\Debug\AppX\js\main.js" />
+    <Content Include="bin\Debug\AppX\packages.config" />
+    <Content Include="bin\Debug\AppX\resources.pri" />
+    <Content Include="bin\Debug\AppX\Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="bin\Debug\AppX\Scripts\jquery-3.1.1.js" />
+    <Content Include="bin\Debug\AppX\Scripts\jquery-3.1.1.min.js" />
+    <Content Include="bin\Debug\AppX\Scripts\jquery-3.1.1.min.map" />
+    <Content Include="bin\Debug\AppX\Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="bin\Debug\AppX\Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="bin\Debug\AppX\Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="bin\Debug\AppX\vs.appxrecipe" />
+    <Content Include="bin\Debug\My Clipboard.build.appxrecipe" />
+    <Content Include="bin\Debug\ReverseMap\resources.pri" />
+    <Content Include="bld\Debug\embed.resfiles" />
+    <Content Include="bld\Debug\embed.resfiles.intermediate" />
+    <Content Include="bld\Debug\layout.resfiles" />
+    <Content Include="bld\Debug\layout.resfiles.intermediate" />
+    <Content Include="bld\Debug\MultipleQualifiersPerDimensionFound.txt" />
+    <Content Include="bld\Debug\My Clipboard.jsproj.FileListAbsolute.txt" />
+    <Content Include="bld\Debug\pri.resfiles" />
+    <Content Include="bld\Debug\pri.resfiles.intermediate" />
+    <Content Include="bld\Debug\priconfig.xml" />
+    <Content Include="bld\Debug\priconfig.xml.intermediate" />
+    <Content Include="bld\Debug\ProjectArchitectures.txt" />
+    <Content Include="bld\Debug\qualifiers.txt" />
+    <Content Include="bld\Debug\qualifiers.txt.intermediate" />
+    <Content Include="bld\Debug\ResourceHandlingTask.state" />
+    <Content Include="bld\Debug\resources.resfiles" />
+    <Content Include="bld\Debug\resources.resfiles.intermediate" />
+    <Content Include="bld\Debug\winrtrefs\winrt2ts.rsp" />
+    <TypeScriptCompile Include="bld\Debug\winrtrefs\winrtrefs.d.ts" />
     <Content Include="Content\normalize.css" />
+    <Content Include="css\default.css.map" />
+    <Content Include="css\default.min.css" />
+    <Content Include="css\default.sass" />
+    <Content Include="css\global\_buttons.sass" />
+    <Content Include="css\global\_global.sass" />
+    <Content Include="css\global\_root.sass" />
+    <Content Include="css\global\_text.sass" />
+    <Content Include="css\layouts\_header.sass" />
+    <Content Include="css\layouts\_history.sass" />
+    <Content Include="css\layouts\_layouts.sass" />
+    <Content Include="css\layouts\_nav.sass" />
+    <Content Include="css\layouts\_pro.sass" />
+    <Content Include="css\utilities\_variables.sass" />
     <Content Include="images\BadgeLogo.scale-100.png" />
     <Content Include="images\BadgeLogo.scale-100.png" />
     <Content Include="images\BadgeLogo.scale-100.png" />
@@ -1279,8 +1401,15 @@
     <Content Include="images\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="images\StoreLogo.png" />
     <Content Include="images\Wide310x150Logo.scale-200.png" />
+    <Content Include="index.jade" />
+    <Content Include="js\events.js" />
+    <Content Include="js\events.min.js" />
+    <Content Include="js\layout.js" />
+    <Content Include="js\layout.min.js" />
     <Content Include="js\main.js" />
-    <Content Include="css\default.css" />
+    <Content Include="js\main.min.js" />
+    <None Include="Package.StoreAssociation.xml" />
+    <None Include="My Clipboard_StoreKey.pfx" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -1291,7 +1420,13 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <None Include="My Clipboard_TemporaryKey.pfx" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4a0dddb5-7a95-4fbf-97cc-616d07737a77}" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Uap.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Uap.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.jsproj.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.jsproj.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment
        that target and the DisableFastUpToDateCheck PropertyGroup. 
        Other similar extension points exist, see Microsoft.Common.targets.

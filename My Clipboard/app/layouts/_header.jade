@@ -1,15 +1,15 @@
 header
-    #nav-open(onClick="toggleMenu();")
+    #nav-open
         include ../icons/_menu.html
     .wrapper
         include ../icons/_clipboard.html
-        button.big.negative(onClick="clearClipboard();") Clear Clipboard
+        button.big.negative Clear Clipboard
     section#bar
-        #up.wrapper.hide(onClick="up();")
+        #up.wrapper.hide
             .button
                 include ../icons/_arrow_up.html
             h2 Clear Clipboard
-        #down.wrapper(onClick="down();")
+        #down.wrapper
             .button
                 include ../icons/_arrow_down.html
             h2 History
