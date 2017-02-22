@@ -20,8 +20,19 @@
             margin-left: 50/$dfs+rem !important
     &:active > .wrapper
         transform: scale(.99)
-    .middle, .bottom
+    .middle, .bottom, #pro-close
         display: none
+    #pro-close
+        position: absolute
+        top: 45/$dfs+rem
+        right: 45/$dfs+rem
+        opacity: .8
+        cursor: pointer
+        &:hover, &:focus
+            opacity: 1
+        svg
+            line
+                stroke: $dark
     & > .wrapper
         transform: none
         .top
@@ -41,14 +52,3 @@
                 display: flex
                 flex-direction: row-reverse
                 align-items: center
-                #pro-close
-                    position: fixed
-                    top: 45/$dfs+rem
-                    right: 45/$dfs+rem
-                    opacity: .8
-                    cursor: pointer
-                    &:hover, &:focus
-                        opacity: 1
-                    svg
-                        line
-                            stroke: $dark
