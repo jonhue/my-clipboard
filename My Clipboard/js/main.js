@@ -2,6 +2,7 @@
 //     Windows.ApplicationModel.EmptyClipboard();
 // };
 
+/*
 (function () {
 "use strict"
 //Initialization
@@ -43,3 +44,4 @@ document.getElementById("btnClick").onclick = function (evt)
     })
 }
 })();
+*/
