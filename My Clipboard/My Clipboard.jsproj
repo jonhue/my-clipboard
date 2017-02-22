@@ -1288,7 +1288,7 @@
     <None Include="My Clipboard_StoreKey.pfx" />
     <Content Include="js\events.min.js" />
     <Content Include="js\layout.min.js" />
-    <Content Include="js\main.min.js" />
+    <Content Include="js\main.js" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />

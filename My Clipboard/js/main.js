@@ -41,14 +41,4 @@ if (!taskRegistered)
 {
     taskBuilder.register();
 }
-
-//click event
-document.getElementById("btnClick").onclick = function (evt)
-{
-    appTrigger.requestAsync().then(function (result) {
-        var abc = result;
-    }, function (err) {
-        console.log(err);
-    })
-}
 })();

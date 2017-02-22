@@ -58,7 +58,7 @@ if (window.jQuery) {
             $('section#pro').addClass('fullPage opened');
             $('html, body').stop().animate({
                 'scrollTop':  $(document).height()
-            }, 750, 'swing');
+            }, 500, 'swing');
             $('section#pro .middle, section#pro .bottom, #pro-close').show();
             $('section#pro .wrapper').stop().animate({ opacity: '1 !important' }, 100);
             $('section#pro .wrapper').stop().fadeIn(350);
