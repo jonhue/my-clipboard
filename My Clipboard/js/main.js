@@ -1,4 +1,4 @@
-// function clearClipboard() {
+﻿// function clearClipboard() {
 //     Windows.ApplicationModel.EmptyClipboard();
 // };
 
