@@ -2,7 +2,15 @@
 //     Windows.ApplicationModel.EmptyClipboard();
 // };
 
-/*
+function runBackgroundTask() {
+    appTrigger.requestAsync().then(function (result) {
+        var abc = result;
+    }, function (err) {
+        console.log(err);
+    });
+};
+
+
 (function () {
 "use strict"
 //Initialization
@@ -44,4 +52,3 @@ document.getElementById("btnClick").onclick = function (evt)
     })
 }
 })();
-*/
