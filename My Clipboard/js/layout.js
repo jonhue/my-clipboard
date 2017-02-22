@@ -2,6 +2,13 @@ if (window.jQuery) {
 
     var barTop = $('section#bar').offset().top;
 
+    function clearClipboard() {
+        $('#clipboard-icon').addClass('shaking');
+        setTimeout(function() {
+            $('#clipboard-icon').addClass('cleared');
+        }, 750);
+    };
+
     function fixBar() {
         if ($(window).scrollTop() > barTop) {
             if ($('nav').hasClass('show')) {

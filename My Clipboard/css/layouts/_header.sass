@@ -16,6 +16,23 @@ header
         justify-content: center
         align-items: center
         height: calc(100vh - 2*#{$bar-padding}px - 60px)
+        svg#clipboard-icon
+            transform: translate3d(0, 0, 0)
+            backface-visibility: hidden
+            perspective: 1000px
+            g
+                &.cleared
+                    opacity: 0
+                &.full
+                    opacity: 1
+            &.shaking
+                animation: shake 1.5s cubic-bezier(.36,.07,.19,.97) both
+            &.cleared
+                g
+                    &.cleared
+                        opacity: 1
+                    &.full
+                        opacity: 0
         button
             margin: 60/$dfs+rem 0 0
     #nav-open
