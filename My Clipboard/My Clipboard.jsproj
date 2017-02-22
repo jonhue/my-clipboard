@@ -1302,7 +1302,22 @@
   <ItemGroup>
     <ProjectReference Include="..\clipboardListener\clipboardListener.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <HintPath>..\packages\Microsoft.Toolkit.Uwp.Notifications.JavaScript.1.3.1\lib\Windows\Microsoft.Toolkit.Uwp.Notifications.winmd</HintPath>
+      <IsWinMDFile>true</IsWinMDFile>
+      <CopyLocal>True</CopyLocal>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
+  <Import Project="..\packages\Microsoft.Toolkit.Uwp.Notifications.JavaScript.1.3.1\build\Windows\Microsoft.Toolkit.Uwp.Notifications.JavaScript.targets" Condition="Exists('..\packages\Microsoft.Toolkit.Uwp.Notifications.JavaScript.1.3.1\build\Windows\Microsoft.Toolkit.Uwp.Notifications.JavaScript.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Toolkit.Uwp.Notifications.JavaScript.1.3.1\build\Windows\Microsoft.Toolkit.Uwp.Notifications.JavaScript.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Toolkit.Uwp.Notifications.JavaScript.1.3.1\build\Windows\Microsoft.Toolkit.Uwp.Notifications.JavaScript.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below then uncomment
        that target and the DisableFastUpToDateCheck PropertyGroup. 
        Other similar extension points exist, see Microsoft.Common.targets.
