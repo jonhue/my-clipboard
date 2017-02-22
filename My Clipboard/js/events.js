@@ -33,18 +33,13 @@ $(document).ready(function() {
         //     };
         // });
 
-        $('#nav-open, #nav-close').click(function() {
-            toggleMenu();
-        });
         $('#up').click(function() {
             up();
         });
         $('#down').click(function() {
             down();
         });
-        $('#more-arrow').click(function() {
-            openPro();
-        });
+
         $('#navigation h1.clipboard').click(function() {
             toggleMenu();
             closePro();
@@ -54,11 +49,23 @@ $(document).ready(function() {
             toggleMenu();
             openPro();
         });
+        $('#nav-open, #nav-close').click(function() {
+            toggleMenu();
+        });
+
         $('#pro .top').click(function() {
             openPro();
         });
         $('#pro-close').click(function() {
             closePro();
+        });
+        $('#more-arrow').click(function() {
+            openPro();
+        });
+
+
+        $('#clear-clipboard').click(function() {
+            clearClipboard();
         });
 
     } else {
