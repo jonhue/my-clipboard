@@ -1,6 +1,12 @@
-﻿// function clearClipboard() {
-//     Windows.ApplicationModel.EmptyClipboard();
-// };
+﻿function clearClipboard() {
+    $('input#empty-string').select();;
+    document.execCommand("copy");
+
+    $('#clipboard-icon').addClass('shaking');
+    setTimeout(function() {
+        $('#clipboard-icon').addClass('cleared');
+    }, 750);
+};
 
 function runBackgroundTask() {
     appTrigger.requestAsync().then(function (result) {

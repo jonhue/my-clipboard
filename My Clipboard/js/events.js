@@ -51,7 +51,6 @@
 
 
         $('#clear-clipboard').click(function() {
-            runBackgroundTask();
             clearClipboard();
         });
 
