@@ -19,15 +19,19 @@ function runBackgroundTask() {
 
 (function () {
     "use strict"
+
     // Initialization
     var Background = Windows.ApplicationModel.Background;
+
     // Register
     var taskBuilder = new Background.BackgroundTaskBuilder();
     taskBuilder.name = "MyBackgroundTask";
+
     // init trigger
     var appTrigger = new Background.ApplicationTrigger();
     taskBuilder.taskEntryPoint = "clipboardListener.MyBackgroundTask";
     taskBuilder.setTrigger(appTrigger);
+
     // Check if background task already registered
     var taskRegistered = false;
     var iter = Background.BackgroundTaskRegistration.allTasks.first();
@@ -52,6 +56,7 @@ function runBackgroundTask() {
 
 (function () {
     "use strict"
+
     //Initialization
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
 
@@ -80,4 +85,15 @@ function runBackgroundTask() {
         $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
         $('#more-arrow').hide();
     };
+})();
+
+
+(function () {
+    //Initialization
+    var app = Windows.ApplicationModel;
+    var package = app.Package.current;
+    var package_id = package.id;
+    var version = package_id.version;
+
+    $('#version').append('<p class="small">' + version.major + '.' + version.minor + '.' + version.build + '.' + version.revision + '</p>');
 })();
