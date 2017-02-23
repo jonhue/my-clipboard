@@ -22,6 +22,22 @@ function runBackgroundTask() {
     });
 };
 
+function buyPro() {
+    // Initialization
+    // var store_app = Windows.ApplicationModel.Store.CurrentApp;
+    var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+
+    store_app.requestProductPurchaseAsync("1", false);
+};
+
+function donate() {
+    // Initialization
+    // var store_app = Windows.ApplicationModel.Store.CurrentApp;
+    var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+
+    store_app.requestProductPurchaseAsync("2", false);
+};
+
 
 (function () {
     "use strict"
@@ -63,7 +79,7 @@ function runBackgroundTask() {
 (function () {
     "use strict"
 
-    //Initialization
+    // Initialization
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
     var localSettings = Windows.Storage.ApplicationData.current.localSettings;
 
@@ -114,4 +130,24 @@ function runBackgroundTask() {
     var version = package_id.version;
 
     $('#version').append('<p class="small">Version ' + version.major + '.' + version.minor + '.' + version.build + '.' + version.revision + '</p>');
+})();
+
+
+(function () {
+    // Initialization
+    // var store_app = Windows.ApplicationModel.Store.CurrentApp;
+    var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+    var licenseInformation = store_app.licenseInformation;
+
+    // Check for My Clipboard pro
+    if (licenseInformation.ProductLicenses["1"].IsActive) {
+        $('section#pro').hide();
+        $('#navigation h1.pro').hide();
+        $('#navigation h1.donate').show();
+    } else {};
+
+    // Check if donated
+    if (licenseInformation.ProductLicenses["2"].IsActive) {
+        $('#navigation h1.donate').hide();
+    } else {};
 })();
