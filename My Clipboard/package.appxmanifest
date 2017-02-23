@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="index.html">
-      <uap:VisualElements DisplayName="My Clipboard" Description="Manage your Clipboard. View your Clipboard History and never loose your memory again. Clear your crucial Data from the Clipboard." BackgroundColor="transparent" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
+      <uap:VisualElements DisplayName="My Clipboard" Description="My Clipboard makes your clipboard work for you." BackgroundColor="transparent" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
         <uap:LockScreen Notification="badge" BadgeLogo="images\BadgeLogo.png" />
         <uap:DefaultTile Wide310x150Logo="images\Wide310x150Logo.png" ShortName="My Clipboard" Square310x310Logo="images\LargeTile.png" Square71x71Logo="images\SmallTile.png">
           <uap:ShowNameOnTiles>

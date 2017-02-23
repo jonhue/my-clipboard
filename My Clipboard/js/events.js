@@ -42,7 +42,7 @@
         $('#pro .top').click(function() {
             openPro();
         });
-        $('#pro-close').click(function() {
+        $('#pro-close, #buy-pro').click(function() {
             closePro();
         });
         $('#more-arrow').click(function() {
@@ -54,7 +54,7 @@
             clearClipboard();
         });
         $('#run-background-task').click(function() {
-            runBackgroundTask();
+            closeRun();
         });
 
     } else {

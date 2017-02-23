@@ -13,7 +13,20 @@
                 color: $highlight
         &:nth-last-child(2)
             padding-bottom: 250/$dfs+rem
-        time
+        &#no-events
+            margin: 0
+            padding: 150/$dfs+rem 0
+            border: none
+            text-align: center
+            p.large
+                width: 100%
+                color: $dark
+                -webkit-user-select: none
+                -moz-user-select: none
+                -ms-user-select: none
+                user-select: none
+                cursor: default
+        p.time
             width: 100/$dfs+rem
             min-width: 100/$dfs+rem
             margin-left: 20/$dfs+rem
