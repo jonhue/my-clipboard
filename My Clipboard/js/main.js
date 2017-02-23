@@ -9,10 +9,16 @@
 };
 
 function runBackgroundTask() {
+    var localSettings = Windows.Storage.ApplicationData.current.localSettings;
     Windows.ApplicationModel.Background.ApplicationTrigger().requestAsync().then(function (result) {
+        localSettings.values["listening"] = true;
         closeRun();
     }, function (err) {
         console.log(err);
+        localSettings.values["listening"] = false;
+
+        $('section#run').removeClass('hide hidden');
+        $('#layout-wrapper').addClass('down');
     });
 };
 
@@ -59,9 +65,11 @@ function runBackgroundTask() {
 
     //Initialization
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
+    var localSettings = Windows.Storage.ApplicationData.current.localSettings;
 
     // Save value
-    roamingSettings.values["historyEventsCount"] = 0;
+    roamingSettings.values["historyEventsCount"] = 2;
+    localSettings.values["listening"] = true;
 
     // Composite setting
     var composite = new Windows.Storage.ApplicationDataCompositeValue();
@@ -89,11 +97,21 @@ function runBackgroundTask() {
 
 
 (function () {
-    //Initialization
+    var localSettings = Windows.Storage.ApplicationData.current.localSettings;
+    var listening = localSettings.values["listening"]
+    if ( listening == true ) {
+        $('section#run').addClass('hide hidden');
+        $('#layout-wrapper').removeClass('down');
+        runBackgroundTask();
+    };
+})();
+
+
+(function () {
     var app = Windows.ApplicationModel;
     var package = app.Package.current;
     var package_id = package.id;
     var version = package_id.version;
 
-    $('#version').append('<p class="small">' + version.major + '.' + version.minor + '.' + version.build + '.' + version.revision + '</p>');
+    $('#version').append('<p class="small">Version ' + version.major + '.' + version.minor + '.' + version.build + '.' + version.revision + '</p>');
 })();
