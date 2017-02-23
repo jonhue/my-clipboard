@@ -1286,9 +1286,13 @@
     <Content Include="images\Wide310x150Logo.scale-200.png" />
     <None Include="Package.StoreAssociation.xml" />
     <None Include="My Clipboard_StoreKey.pfx" />
+    <Content Include="js\api\background_tasks.js" />
+    <Content Include="js\api\clear_clipboard.js" />
+    <Content Include="js\api\storage.js" />
+    <Content Include="js\api\store.js" />
+    <Content Include="js\api\version.js" />
     <Content Include="js\events.min.js" />
     <Content Include="js\layout.min.js" />
-    <Content Include="js\main.js" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
