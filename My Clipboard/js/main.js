@@ -1,4 +1,4 @@
-﻿function clearClipboard() {
+function clearClipboard() {
     $('input#empty-string').select();;
     document.execCommand("copy");
 
@@ -150,14 +150,14 @@ function donate() {
     var licenseInformation = store_app.licenseInformation;
 
     // Check for My Clipboard pro
-    if (licenseInformation.ProductLicenses["1"].IsActive) {
+    if (licenseInformation.productLicenses["1"].isActive) {
         $('section#pro').hide();
         $('#navigation h1.pro').hide();
         $('#navigation h1.donate').show();
     } else {};
 
     // Check if donated
-    if (licenseInformation.ProductLicenses["2"].IsActive) {
+    if (licenseInformation.productLicenses["2"].isActive) {
         $('#navigation h1.donate').hide();
     } else {};
 })();
