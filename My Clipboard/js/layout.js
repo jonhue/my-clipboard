@@ -51,7 +51,7 @@
             $('section#pro').addClass('fullPage opened');
             $('html, body').stop().animate({
                 'scrollTop':  $(document).height()
-            }, 500, 'swing');
+            }, 750, 'swing');
             $('section#pro .middle, section#pro .bottom, #pro-close').show();
             $('section#pro .wrapper').stop().animate({ opacity: '1 !important' }, 100);
             $('section#pro .wrapper').stop().fadeIn(350);
@@ -70,6 +70,12 @@
                 $('section#history, header').stop().animate({ opacity: '1 !important' }, 100);
             }, 800);
         });
+    };
+
+    function closeRun() {
+        $('section#run').addClass('hide');
+        $('header').removeClass('dark');
+        $('#layout-wrapper').removeClass('down');
     };
 
 } else {

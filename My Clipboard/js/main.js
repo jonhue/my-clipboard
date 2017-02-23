@@ -9,8 +9,8 @@
 };
 
 function runBackgroundTask() {
-    appTrigger.requestAsync().then(function (result) {
-        var abc = result;
+    Windows.ApplicationModel.Background.ApplicationTrigger().requestAsync().then(function (result) {
+        closeRun();
     }, function (err) {
         console.log(err);
     });
