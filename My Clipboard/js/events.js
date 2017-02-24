@@ -73,6 +73,22 @@
             closeResume();
         });
 
+        $('section#history p.large').click(function() {
+            copyClipboard($(this).closest('div').prop('id'));
+            showMessage('copied');
+        });
+
+        $('section#history').hover(function() {
+            if ( !$('#click-to-copy').hasClass('hide') ) {
+                $('#click-to-copy').addClass('show');
+                setTimeout(function() {
+                    $('#click-to-copy').removeClass('show');
+                    setSetting('roaming', 'click_to_copy_setup', true)
+                    $('#click-to-copy').addClass('hide');
+                }, 4000);
+            };
+        });
+
     } else {
         // jQuery not loaded!
     };

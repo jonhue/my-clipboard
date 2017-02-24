@@ -1,4 +1,14 @@
-﻿function resetHistory() {
+function setSetting(type, name, value) {
+    if ( type == 'roaming' ) {
+        var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
+        roamingSettings.values[name] = value;
+    } else if ( type == 'local' ) {
+        var localSettings = Windows.Storage.ApplicationData.current.localSettings;
+        localSettings.values[name] = value;
+    };
+};
+
+function resetHistory() {
     // Initialization
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
     var localSettings = Windows.Storage.ApplicationData.current.localSettings;
@@ -56,6 +66,8 @@ function testStorage() {
     var localSettings = Windows.Storage.ApplicationData.current.localSettings;
 
     // Save value
+    roamingSettings.values["click_to_copy_setup"] = false;
+
     roamingSettings.values["historyEventsCount"] = 6;
     roamingSettings.values["historyEventsMin"] = 0;
     localSettings.values["listening"] = true;
@@ -110,5 +122,9 @@ function testStorage() {
     } else {
         $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
         $('#more-arrow').hide();
+    };
+
+    if ( roamingSettings.values["click_to_copy_setup"] ) {
+        $('#click-to-copy').addClass('hide');
     };
 })();

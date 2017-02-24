@@ -91,6 +91,15 @@
         $('#more-arrow').hide();
     };
 
+    function showMessage(type) {
+        if ( type == "copied" ) {
+            $('#copied').addClass('show');
+            setTimeout(function() {
+                $('#copied').removeClass('show');
+            }, 2000);
+        };
+    };
+
 } else {
     // jQuery not loaded!
 };
