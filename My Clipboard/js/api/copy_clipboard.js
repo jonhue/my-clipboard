@@ -1,8 +1,4 @@
 function copyClipboard(i) {
-    // For Get Clipboard
-    // var content = Windows.ApplicationModel.DataTransfer.Clipboard.getContent();
-    // var text = content.getTextAsync();
-
     // Initialization
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
 

@@ -45,11 +45,16 @@ header
             svg
                 line
                     stroke: $dark
-    #reset-history-wrapper
+    #buttons-wrapper
+        display: flex
+        align-items: center
         position: absolute
         top: 45/$dfs+rem
         right: $bar-padding/$dfs+rem
-        max-width: 200/$dfs+rem
+        max-width: 435/$dfs+rem
+        button
+            &:first-child
+                margin-right: 35/$dfs+rem
     #bar
         position: relative
         z-index: 2

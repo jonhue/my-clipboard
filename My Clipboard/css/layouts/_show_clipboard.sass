@@ -1,0 +1,34 @@
+#show-clipboard
+    position: fixed
+    z-index: 4
+    top: -100%
+    left: 0
+    width: 100%
+    min-height: 100vh
+    background: rgba($white, .9)
+    transition: all .75s ease-in-out
+    &.show
+        top: 0
+    #show-clipboard-close
+        position: absolute
+        top: 45/$dfs+rem
+        right: 45/$dfs+rem
+        opacity: .8
+        cursor: pointer
+        &:hover, &:focus
+            opacity: 1
+        svg
+            line
+                stroke: $dark
+    & > .wrapper
+        display: flex
+        justify-content: center
+        width: 100%
+        & > .wrapper
+            width: 600/$dfs+rem
+            max-width: 80%
+            margin: 200/$dfs+rem 0 200/$dfs+rem
+            .bottom
+                display: flex
+                flex-direction: row-reverse
+                margin: 35/$dfs+rem 0 0

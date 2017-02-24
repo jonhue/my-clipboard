@@ -89,6 +89,15 @@
             };
         });
 
+        $('#show-clipboard-open').click(function() {
+            getClipboard();
+            $('section#show-clipboard textarea').focus();
+            $('section#show-clipboard').addClass('show');
+        });
+        $('#show-clipboard-close').click(function() {
+            $('section#show-clipboard').removeClass('show');
+        });
+
     } else {
         // jQuery not loaded!
     };
