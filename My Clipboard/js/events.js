@@ -41,6 +41,7 @@
         $('#donate').click(function() {
             donate();
             toggleMenu();
+            openResume();
         });
 
         $('#pro .top').click(function() {
@@ -52,6 +53,7 @@
         $('#buy-pro').click(function() {
             buyPro();
             closePro();
+            openResume();
         });
         $('#more-arrow').click(function() {
             openPro();
@@ -64,6 +66,11 @@
         $('#reset-history').click(function() {
             resetHistory();
             clearHistoryLayout();
+        });
+
+        $('section#resume button').click(function() {
+            checkFeatures();
+            closeResume();
         });
 
     } else {

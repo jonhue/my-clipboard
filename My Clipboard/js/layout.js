@@ -78,6 +78,13 @@
         $('#layout-wrapper').removeClass('down');
     };
 
+    function openResume() {
+        $('section#resume').fadeIn(250);
+    };
+    function closeResume() {
+        $('section#resume').hide();
+    };
+
     function clearHistoryLayout() {
         $('section#history .item').remove();
         $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
