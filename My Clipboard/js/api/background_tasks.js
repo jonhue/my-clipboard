@@ -30,13 +30,13 @@
 
     if (!taskRegistered)
     {
-        taskBuilder.register();
+        var task = taskBuilder.register();
     }
 
 
     function runBackgroundTask() {
         var localSettings = Windows.Storage.ApplicationData.current.localSettings;
-        Windows.ApplicationModel.Background.ApplicationTrigger().requestAsync().then(function (result) {
+        appTrigger.requestAsync().then(function (result) {
             localSettings.values["listening"] = true;
             closeRun();
         }, function (err) {

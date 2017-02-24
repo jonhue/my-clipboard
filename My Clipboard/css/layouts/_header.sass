@@ -16,7 +16,7 @@ header
         justify-content: center
         align-items: center
         height: calc(100vh - 2*#{$bar-padding}px - 60px)
-        padding-top: 75/$dfs+rem
+        padding-top: 70/$dfs+rem
         svg#clipboard-icon
             transform: translate3d(0, 0, 0)
             backface-visibility: hidden
@@ -38,8 +38,8 @@ header
             margin: 60/$dfs+rem 0 0
     #nav-open
         position: absolute
-        top: 50/$dfs+rem
-        left: 60/$dfs+rem
+        top: 45/$dfs+rem
+        left: $bar-padding/$dfs+rem
         cursor: pointer
         &:hover
             svg
@@ -47,8 +47,8 @@ header
                     stroke: $dark
     #reset-history-wrapper
         position: absolute
-        top: 50/$dfs+rem
-        right: 60/$dfs+rem
+        top: 45/$dfs+rem
+        right: $bar-padding/$dfs+rem
         max-width: 200/$dfs+rem
     #bar
         position: relative
