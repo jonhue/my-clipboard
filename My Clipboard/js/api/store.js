@@ -12,17 +12,7 @@ function donate() {
     // var store_app = Windows.ApplicationModel.Store.CurrentApp;
     var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
 
-    var purchaseResults = store_app.requestProductPurchaseAsync("2");
-    switch ( purchaseResults.status ) {
-        case productPurchaseStatus.succeeded:
-            var transaction_id = purchaseResults.transactionId;
-            store_app.reportConsumableFulfillment("2", transaction_id);
-            break;
-        case productPurchaseStatus.notFulfilled:
-            var transaction_id = purchaseResults.transactionId;
-            store_app.reportConsumableFulfillment("2", transaction_id);
-            break;
-    };
+    store_app.requestProductPurchaseAsync("2", false);
 };
 
 function checkFeatures() {
@@ -38,11 +28,6 @@ function checkFeatures() {
         $('section#history #more-arrow').hide();
         $('#navigation h1.pro').hide();
         $('#navigation h1.donate').show();
-    } else {};
-
-    // Check if donated
-    if (licenseInformation.productLicenses["2"].isActive) {
-        $('#navigation h1.donate').hide();
     } else {};
 };
 
