@@ -2,8 +2,18 @@ function buyPro() {
     // Initialization
     // var store_app = Windows.ApplicationModel.Store.CurrentApp;
     var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+    var licenseInformation = store_app.licenseInformation;
 
     store_app.requestProductPurchaseAsync("1", false);
+
+    // Check for My Clipboard pro
+    if (licenseInformation.productLicenses["1"].isActive) {
+        $('section#pro').hide();
+        $('section#history .item:nth-last-child(2)').addClass('is-bottom');
+        $('section#history #more-arrow').hide();
+        $('#navigation h1.pro').hide();
+        $('#navigation h1.donate').show();
+    } else {};
 };
 
 function donate() {
@@ -31,7 +41,11 @@ function donate() {
     var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
     var licenseInformation = store_app.licenseInformation;
 
-    // Check for My Clipboard pro
+    // Set Price for My Clipboard Pro
+    var price_pro = licenseInformation.productLicenses["1"].formattedPrice;
+    $('button#buy-pro').html('Buy for ' + price_pro);
+
+    // Check for My Clipboard Pro
     if (licenseInformation.productLicenses["1"].isActive) {
         $('section#pro').hide();
         $('section#history .item:nth-last-child(2)').addClass('is-bottom');

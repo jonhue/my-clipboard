@@ -38,11 +38,19 @@
         $('#nav-open, #nav-close').click(function() {
             toggleMenu();
         });
+        $('#donate').click(function() {
+            donate();
+            toggleMenu();
+        });
 
         $('#pro .top').click(function() {
             openPro();
         });
-        $('#pro-close, #buy-pro').click(function() {
+        $('#pro-close').click(function() {
+            closePro();
+        });
+        $('#buy-pro').click(function() {
+            buyPro();
             closePro();
         });
         $('#more-arrow').click(function() {
