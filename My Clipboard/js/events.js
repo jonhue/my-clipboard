@@ -53,9 +53,6 @@
         $('#clear-clipboard').click(function() {
             clearClipboard();
         });
-        $('#run-background-task').click(function() {
-            closeRun();
-        });
 
     } else {
         // jQuery not loaded!

@@ -7,6 +7,7 @@
 
     // Save value
     roamingSettings.values["historyEventsCount"] = 2;
+    roamingSettings.values["historyEventsMin"] = 0;
     localSettings.values["listening"] = true;
 
     // Composite setting
@@ -21,11 +22,17 @@
 
     // Retrieve value
     var num = roamingSettings.values["historyEventsCount"];
+    var min = roamingSettings.values["historyEventsMin"];
     if ( num > 0 ) {
-        for ( var i = num; i > 0; i-- ) {
+        for ( var i = num; i > min; i-- ) {
             var item = roamingSettings.values[i]
-            $('section#history').prepend('<div class="item" id=' + "0" + '><p class="time">' + item["date"] + '</p><p class="large">' + item["value"] + '</p></div>');
-            $('#more-arrow').show();
+            if ( item["value"] != " " ) {
+                $('section#history').prepend('<div class="item" id=' + i + '><p class="time">' + item["date"] + '</p><p class="large">' + item["value"] + '</p></div>');
+                $('#more-arrow').show();
+            };
+        };
+        if ( (roamingSettings.values[num])["value"] != " " ) {
+            $('section#history .item:first-child').addClass('active');
         };
     } else {
         $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');

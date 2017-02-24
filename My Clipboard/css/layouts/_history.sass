@@ -7,10 +7,11 @@
         padding-bottom: 50/$dfs+rem
         margin: 0 ($bar-padding/$dfs+30/$dfs)+rem
         border-left: solid 2px $light
-        &:first-child
-            padding-top: 100/$dfs+rem
+        &.active
             p.large
                 color: $highlight
+        &:first-child
+            padding-top: 100/$dfs+rem
         &:nth-last-child(2)
             padding-bottom: 250/$dfs+rem
         &#no-events

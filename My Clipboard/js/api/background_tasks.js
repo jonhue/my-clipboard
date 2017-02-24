@@ -1,18 +1,3 @@
-function runBackgroundTask() {
-    var localSettings = Windows.Storage.ApplicationData.current.localSettings;
-    Windows.ApplicationModel.Background.ApplicationTrigger().requestAsync().then(function (result) {
-        localSettings.values["listening"] = true;
-        closeRun();
-    }, function (err) {
-        console.log(err);
-        localSettings.values["listening"] = false;
-
-        $('section#run').removeClass('hide hidden');
-        $('#layout-wrapper').addClass('down');
-    });
-};
-
-
 (function () {
     "use strict"
 
@@ -47,6 +32,24 @@ function runBackgroundTask() {
     {
         taskBuilder.register();
     }
+
+
+    function runBackgroundTask() {
+        var localSettings = Windows.Storage.ApplicationData.current.localSettings;
+        Windows.ApplicationModel.Background.ApplicationTrigger().requestAsync().then(function (result) {
+            localSettings.values["listening"] = true;
+            closeRun();
+        }, function (err) {
+            console.log(err);
+            localSettings.values["listening"] = false;
+
+            $('section#run').removeClass('hide hidden');
+            $('#layout-wrapper').addClass('down');
+        });
+    };
+    $('#run-background-task').click(function() {
+        runBackgroundTask();
+    });
 
 
     // Check if Background Task is running
