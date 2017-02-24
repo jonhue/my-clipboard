@@ -1,4 +1,4 @@
-function clearClipboard() {
+﻿function clearClipboard() {
     $('input#empty-string').select();;
     document.execCommand("copy");
 

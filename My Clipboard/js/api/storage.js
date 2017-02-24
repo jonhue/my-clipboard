@@ -1,4 +1,4 @@
-function resetHistory() {
+﻿function resetHistory() {
     // Initialization
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
     var localSettings = Windows.Storage.ApplicationData.current.localSettings;
