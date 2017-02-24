@@ -1,6 +1,5 @@
 ﻿function clearClipboard() {
-    $('input#empty-string').select();
-    document.execCommand("copy");
+    Windows.ApplicationModel.DataTransfer.Clipboard.clear();
 
     $('#clipboard-icon').addClass('shaking');
     setTimeout(function() {

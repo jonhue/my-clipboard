@@ -1306,14 +1306,6 @@
   <ItemGroup>
     <ProjectReference Include="..\clipboardListener\clipboardListener.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="NotificationsExtensions">
-      <HintPath>..\packages\NotificationsExtensions.Win10.JavaScript.14332.0.2\lib\Windows\NotificationsExtensions.winmd</HintPath>
-      <IsWinMDFile>true</IsWinMDFile>
-      <CopyLocal>True</CopyLocal>
-      <SpecificVersion>True</SpecificVersion>
-    </Reference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <Import Project="..\packages\NotificationsExtensions.Win10.JavaScript.14332.0.2\build\Windows\NotificationsExtensions.Win10.JavaScript.targets" Condition="Exists('..\packages\NotificationsExtensions.Win10.JavaScript.14332.0.2\build\Windows\NotificationsExtensions.Win10.JavaScript.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
