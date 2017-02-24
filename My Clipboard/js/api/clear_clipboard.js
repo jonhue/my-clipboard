@@ -1,5 +1,5 @@
 ﻿function clearClipboard() {
-    $('input#empty-string').select();;
+    $('input#empty-string').select();
     document.execCommand("copy");
 
     $('#clipboard-icon').addClass('shaking');
