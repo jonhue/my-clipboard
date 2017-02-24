@@ -1288,6 +1288,7 @@
     <None Include="My Clipboard_StoreKey.pfx" />
     <Content Include="js\api\background_tasks.js" />
     <Content Include="js\api\clear_clipboard.js" />
+    <Content Include="js\api\review.js" />
     <Content Include="js\api\storage.js" />
     <Content Include="js\api\store.js" />
     <Content Include="js\api\version.js" />
