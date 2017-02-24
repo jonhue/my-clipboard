@@ -57,17 +57,5 @@ function checkFeatures() {
     var price_pro = licenseInformation.productLicenses["1"].formattedPrice;
     $('button#buy-pro').html('Buy for ' + price_pro);
 
-    // Check for My Clipboard Pro
-    if (licenseInformation.productLicenses["1"].isActive) {
-        $('section#pro').hide();
-        $('section#history .item:nth-last-child(2)').addClass('is-bottom');
-        $('section#history #more-arrow').hide();
-        $('#navigation h1.pro').hide();
-        $('#navigation h1.donate').show();
-    } else {};
-
-    // Check if donated
-    if (licenseInformation.productLicenses["2"].isActive) {
-        $('#navigation h1.donate').hide();
-    } else {};
+    checkFeatures();
 })();
