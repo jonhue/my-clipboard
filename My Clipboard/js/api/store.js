@@ -34,6 +34,8 @@ function donate() {
     // Check for My Clipboard pro
     if (licenseInformation.productLicenses["1"].isActive) {
         $('section#pro').hide();
+        $('section#history .item:nth-last-child(2)').addClass('is-bottom');
+        $('section#history #more-arrow').hide();
         $('#navigation h1.pro').hide();
         $('#navigation h1.donate').show();
     } else {};

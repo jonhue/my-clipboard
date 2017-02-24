@@ -1,6 +1,7 @@
 *
     margin: 0
     padding: 0
+    opacity: 1
     text-decoration: none
     outline: none
     box-sizing: border-box
@@ -32,10 +33,18 @@ input#empty-string
     pointer-events: none
 
 #layout-wrapper
-    transition: all .35s ease-in-out
+    position: absolute
+    width: 100%
     margin: 0
+    transition: all .35s ease-in-out
     &.hide
+        position: absolute
+        width: 100%
         margin-left: 100%
+        header
+            #nav-open, #reset-history-wrapper
+                opacity: 0
+                pointer-events: none
 
 
 @media screen and (min-width: 1200px)

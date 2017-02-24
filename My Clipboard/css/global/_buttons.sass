@@ -6,7 +6,7 @@ button, a.btn, input[type="submit"]
     height: 60/$dfs+rem
     padding: 0 70/$dfs+rem
     font-family: 'Open Sans', 'Helvetica Neue', 'Roboto', 'Lato', 'Source Sans Pro', Helvetica, sans-serif !important
-    font-size: 18/$dfs+rem
+    font-size: 19/$dfs+rem
     font-weight: 600
     color: $white
     line-height: 50/$dfs+rem
@@ -15,13 +15,28 @@ button, a.btn, input[type="submit"]
     cursor: pointer
     border: none
     border-radius: 30/$dfs+rem
-    &.big
-        height: 60/$dfs+rem
-        font-size: 19/$dfs+rem
-        border-radius: 30/$dfs+rem
+    &.tiny
+        height: 50/$dfs+rem
+        padding: 0 35/$dfs+rem
+        font-size: 16/$dfs+rem
+        border-radius: 25/$dfs+rem
+    &.sec
+        color: $highlight
+        background: transparent
+        border: 2px solid $highlight
+        &:hover
+            color: $white
+            background: $highlight
     &.negative
         color: $highlight
         background: $white
+        &.sec
+            color: $white
+            background: transparent
+            border-color: $white
+            &:hover
+                color: $highlight
+                background: $white
     &:hover, &:focus
         transform: translateY(-1px)
         box-shadow: 0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08)
