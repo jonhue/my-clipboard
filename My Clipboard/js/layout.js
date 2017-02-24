@@ -78,6 +78,12 @@
         $('#layout-wrapper').removeClass('down');
     };
 
+    function clearHistoryLayout() {
+        $('section#history .item').remove();
+        $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
+        $('#more-arrow').hide();
+    };
+
 } else {
     // jQuery not loaded!
 };

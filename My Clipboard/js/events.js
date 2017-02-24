@@ -53,6 +53,10 @@
         $('#clear-clipboard').click(function() {
             clearClipboard();
         });
+        $('#reset-history').click(function() {
+            resetHistory();
+            clearHistoryLayout();
+        });
 
     } else {
         // jQuery not loaded!

@@ -1,3 +1,20 @@
+function resetHistory() {
+    // Initialization
+    var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
+    var localSettings = Windows.Storage.ApplicationData.current.localSettings;
+
+    // Reset History
+    var num = roamingSettings.values["historyEventsCount"];
+    for ( var i = num; i > 0; i-- ) {
+        localSettings.values.remove(i);
+    };
+
+    // Reset Counters
+    roamingSettings.values["historyEventsCount"] = 0;
+    roamingSettings.values["historyEventsMin"] = 0;
+};
+
+
 (function () {
     "use strict"
 
