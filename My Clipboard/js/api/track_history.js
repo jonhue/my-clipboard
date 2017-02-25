@@ -46,8 +46,10 @@ function trackHistory() {
         $('#clipboard-icon').addClass('cleared');
         $('section#history .item').removeClass('active');
     } else {
-        $('#more-arrow').show();
-        
+        if ( !licenseInformation.productLicenses["1"].isActive ) {
+            $('#more-arrow').show();
+        };
+
         // Update historyEventsCount
         var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
         var historyEventsCount = roamingSettings.values["historyEventsCount"];
@@ -71,7 +73,7 @@ function trackHistory() {
             historyEventsMin++;
 
             $('section#history .item:last-child').hide();
-            if (licenseInformation.productLicenses["1"].isActive) {
+            if ( licenseInformation.productLicenses["1"].isActive ) {
                 // show Message that limit has been reached ...
             };
         };

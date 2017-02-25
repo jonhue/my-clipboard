@@ -16,7 +16,9 @@ function setHistory() {
     var num = roamingSettings.values["historyEventsCount"];
     var min = roamingSettings.values["historyEventsMin"];
     if ( num > 0 ) {
-        $('#more-arrow').show();
+        if ( !licenseInformation.productLicenses["1"].isActive ) {
+            $('#more-arrow').show();
+        };
         for ( var i = 1; i <= num; i++ ) {
             var item = roamingSettings.values[i]
             if ( item["value"] != " " && item["value"] != "" ) {
