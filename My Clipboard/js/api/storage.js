@@ -116,8 +116,10 @@ function testStorage() {
                 };
             };
         };
-        if ( (roamingSettings.values[num])["value"] != " " ) {
+        if ( (roamingSettings.values[num])["value"] != " " && (roamingSettings.values[num])["value"] != "" ) {
             $('section#history .item:first-child').addClass('active');
+        } else {
+            $('#clipboard-icon').addClass('cleared');
         };
     } else {
         $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
