@@ -4,7 +4,7 @@ var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
 var licenseInformation = store_app.licenseInformation;
 
 if ( licenseInformation.productLicenses["1"].isActive ) {
-    var maxHistoryEvents = 500;
+    var maxHistoryEvents = 250; // also edit value in checkFeatures() (below)
 } else {
     var maxHistoryEvents = 5;
 };
@@ -45,7 +45,7 @@ function checkFeatures() {
         var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
         var historyEventsCount = roamingSettings.values["historyEventsCount"];
         var historyEventsMin = roamingSettings.values["historyEventsMin"];
-        maxHistoryEvents = 500;
+        maxHistoryEvents = 250;
         if ( roamingSettings.values["pro_setup"] == false ) {
             if ( historyEventsCount <= maxHistoryEvents ) {
                 historyEventsMin = 0;
