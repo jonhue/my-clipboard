@@ -4,7 +4,7 @@
     var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
     var licenseInformation = store_app.licenseInformation;
 
-    store_app.requestProductPurchaseAsync("1", false);
+    store_app.requestProductPurchaseAsync("1");
 };
 
 function donate() {
@@ -12,7 +12,7 @@ function donate() {
     // var store_app = Windows.ApplicationModel.Store.CurrentApp;
     var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
 
-    store_app.requestProductPurchaseAsync("2", false);
+    store_app.requestProductPurchaseAsync("2");
 };
 
 function checkFeatures() {
@@ -28,6 +28,20 @@ function checkFeatures() {
         $('section#history #more-arrow').hide();
         $('#navigation h1.pro').hide();
         $('#navigation h1.donate').show();
+
+        // Update History
+        var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
+        var historyEventsCount = roamingSettings.values["historyEventsCount"];
+        var historyEventsMin = roamingSettings.values["historyEventsMin"];
+        if ( roamingSettings.values["pro_setup"] == false ) {
+            if ( historyEventsCount <= 500 ) {
+                historyEventsMin = 0;
+            } else {
+                historyEventsMin = historyEventsMin - historyEventsCount;
+            };
+            setHistory();
+            roamingSettings.values["pro_setup"] = true;
+        };
     } else {};
 };
 

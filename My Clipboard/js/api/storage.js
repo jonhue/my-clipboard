@@ -8,6 +8,42 @@
     };
 };
 
+function setHistory() {
+    // Initialization
+    var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
+    $('section#history .item').remove();
+
+    var num = roamingSettings.values["historyEventsCount"];
+    var min = roamingSettings.values["historyEventsMin"];
+    if ( num > 0 ) {
+        for ( var i = 1; i <= num; i++ ) {
+            var item = roamingSettings.values[i]
+            if ( item["value"] != " " && item["value"] != "" ) {
+                $('section#history').prepend('<div class="item" id=' + i + '><p class="time">' + item["date"] + '</p><p class="large">' + item["value"] + '</p></div>');
+
+                item = $('section#history .item#' + i + ' p.large');
+                if ( item.html().length > 300 ) {
+                    var text = item.text();
+                    text = text.substr(0,300) + '...';
+                    item.text(text);
+                };
+            };
+        };
+        if ( (roamingSettings.values[num])["value"] != " " && (roamingSettings.values[num])["value"] != "" ) {
+            $('section#history .item:first-child').addClass('active');
+        } else {
+            $('#clipboard-icon').addClass('cleared');
+        };
+    } else {
+        $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
+        $('#more-arrow').hide();
+    };
+
+    if ( roamingSettings.values["click_to_copy_setup"] ) {
+        $('#click-to-copy').addClass('hide');
+    };
+};
+
 function resetHistory() {
     // Initialization
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
@@ -69,6 +105,9 @@ function testStorage() {
     if ( roamingSettings.values["click_to_copy_setup"] === null ) {
         roamingSettings.values["click_to_copy_setup"] = false;
     };
+    if ( roamingSettings.values["pro_setup"] === null ) {
+        roamingSettings.values["pro_setup"] = false;
+    };
 
     if ( roamingSettings.values["historyEventsCount"] === null ) {
         roamingSettings.values["historyEventsCount"] = 0;
@@ -82,34 +121,5 @@ function testStorage() {
 
     // testStorage();
 
-    // Retrieve value
-    var num = roamingSettings.values["historyEventsCount"];
-    var min = roamingSettings.values["historyEventsMin"];
-    if ( num > 0 ) {
-        for ( var i = 1; i <= num; i++ ) {
-            var item = roamingSettings.values[i]
-            if ( item["value"] != " " && item["value"] != "" ) {
-                $('section#history').prepend('<div class="item" id=' + i + '><p class="time">' + item["date"] + '</p><p class="large">' + item["value"] + '</p></div>');
-
-                item = $('section#history .item#' + i + ' p.large');
-                if ( item.html().length > 300 ) {
-                    var text = item.text();
-                    text = text.substr(0,300) + '...';
-                    item.text(text);
-                };
-            };
-        };
-        if ( (roamingSettings.values[num])["value"] != " " && (roamingSettings.values[num])["value"] != "" ) {
-            $('section#history .item:first-child').addClass('active');
-        } else {
-            $('#clipboard-icon').addClass('cleared');
-        };
-    } else {
-        $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
-        $('#more-arrow').hide();
-    };
-
-    if ( roamingSettings.values["click_to_copy_setup"] ) {
-        $('#click-to-copy').addClass('hide');
-    };
+    setHistory();
 })();

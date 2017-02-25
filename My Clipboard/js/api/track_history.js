@@ -12,10 +12,11 @@
     };
 
     // get Clipboard if changed to last event
-    var text = "dsypurghdsyolp"
+    var text = ""
 
     if ( text == " " || text == "" ) {
         $('#clipboard-icon').addClass('cleared');
+        $('section#history .item').removeClass('active');
     } else {
         // Update historyEventsCount
         var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
@@ -55,6 +56,8 @@
             text = text.substr(0,300) + '...';
             item.text(text);
         };
+
+        $('#clipboard-icon').removeClass('cleared');
     };
 };
 

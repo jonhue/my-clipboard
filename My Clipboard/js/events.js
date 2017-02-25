@@ -96,9 +96,9 @@
 
         $('#show-clipboard-open').click(function() {
             getClipboard();
-            $('section#show-clipboard textarea').focus();
             $('section#show-clipboard').addClass('show');
             setTimeout(function() {
+                $('section#show-clipboard #textarea').focus();
                 $('#layout-wrapper').addClass('hidden');
             }, 750);
         });
