@@ -4,6 +4,10 @@
         fixBar();
         transformBar();
 
+        window.setInterval(function(){
+            trackHistory();
+        }, 1000);
+
         $(window).resize(function() {
             location.reload();
         });

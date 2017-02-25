@@ -1,4 +1,19 @@
-﻿(function () {
+function trackHistory() {
+    // Initialization
+    // var store_app = Windows.ApplicationModel.Store.CurrentApp;
+    var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+    var licenseInformation = store_app.licenseInformation;
+
+    // Check for My Clipboard pro
+    if (licenseInformation.productLicenses["1"].isActive) {
+        var max = 500;
+    } else {
+        var max = 5;
+    };
+};
+
+/*
+(function () {
     "use strict"
 
     // Initialization
@@ -61,3 +76,4 @@
         runBackgroundTask();
     };
 })();
+*/

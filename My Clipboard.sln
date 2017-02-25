@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "My Clipboard", "My Clipboard\My Clipboard.jsproj", "{1637D46D-FBD7-470C-A9FD-B91B7369FA5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clipboardListener", "clipboardListener\clipboardListener.csproj", "{3004E577-1CB4-4379-8DDC-16C72EBDD405}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,22 +41,6 @@ Global
 		{1637D46D-FBD7-470C-A9FD-B91B7369FA5E}.Release|x86.ActiveCfg = Release|x86
 		{1637D46D-FBD7-470C-A9FD-B91B7369FA5E}.Release|x86.Build.0 = Release|x86
 		{1637D46D-FBD7-470C-A9FD-B91B7369FA5E}.Release|x86.Deploy.0 = Release|x86
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Debug|ARM.ActiveCfg = Debug|ARM
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Debug|ARM.Build.0 = Debug|ARM
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Debug|x64.ActiveCfg = Debug|x64
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Debug|x64.Build.0 = Debug|x64
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Debug|x86.ActiveCfg = Debug|x86
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Debug|x86.Build.0 = Debug|x86
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Release|ARM.ActiveCfg = Release|ARM
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Release|ARM.Build.0 = Release|ARM
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Release|x64.ActiveCfg = Release|x64
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Release|x64.Build.0 = Release|x64
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Release|x86.ActiveCfg = Release|x86
-		{3004E577-1CB4-4379-8DDC-16C72EBDD405}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
