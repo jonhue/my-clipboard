@@ -68,7 +68,7 @@ function trackHistory() {
         // Update historyEventsMin
         if ( historyEventsCount > maxHistoryEvents ) {
             var historyEventsMin = roamingSettings.values["historyEventsMin"];
-            historyEventsMin++;
+            historyEventsMin = historyEventsCount - maxHistoryEvents;
 
             $('section#history .item').last().remove();
             if ( licenseInformation.productLicenses["1"].isActive ) {
@@ -86,7 +86,7 @@ function trackHistory() {
             item.text(text);
         };
 
-        $('#clipboard-icon').removeClass('cleared');
+        $('#clipboard-icon').removeClass('shaking cleared');
 
         // Update Cloud
         roamingSettings.values["historyEventsCount"] = historyEventsCount;

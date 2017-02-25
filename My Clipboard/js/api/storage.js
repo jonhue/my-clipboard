@@ -13,9 +13,9 @@ function setHistory() {
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
     $('section#history .item').remove();
 
-    var num = roamingSettings.values["historyEventsCount"];
-    var min = roamingSettings.values["historyEventsMin"];
-    if ( num > 0 ) {
+    var historyEventsCount = roamingSettings.values["historyEventsCount"];
+    var historyEventsMin = roamingSettings.values["historyEventsMin"];
+    if ( historyEventsCount > 0 ) {
         // Initialization
         // var store_app = Windows.ApplicationModel.Store.CurrentApp;
         var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
@@ -24,7 +24,7 @@ function setHistory() {
             $('#more-arrow').show();
         };
 
-        for ( var i = min; i <= num; i++ ) {
+        for ( var i = historyEventsMin; i < historyEventsCount; i++ ) {
             var item = roamingSettings.values[i]
             if ( item["value"] != " " && item["value"] != "" ) {
                 $('section#history').prepend('<div class="item" id=' + i + '><p class="time">' + item["date"] + '</p><p class="large">' + item["value"] + '</p></div>');
@@ -37,11 +37,12 @@ function setHistory() {
                 };
             };
         };
-        if ( (roamingSettings.values[num])["value"] != " " && (roamingSettings.values[num])["value"] != "" ) {
+        if ( (roamingSettings.values[historyEventsCount])["value"] != " " && (roamingSettings.values[historyEventsCount])["value"] != "" ) {
             $('section#history .item:first-child').addClass('active');
         } else {
             $('#clipboard-icon').addClass('cleared');
         };
+        if ( historyEventsMin > 0 ) {};
     } else {
         $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
         $('#more-arrow').hide();
@@ -58,8 +59,8 @@ function resetHistory() {
     var localSettings = Windows.Storage.ApplicationData.current.localSettings;
 
     // Reset History
-    var num = roamingSettings.values["historyEventsCount"];
-    for ( var i = num; i > 0; i-- ) {
+    var historyEventsCount = roamingSettings.values["historyEventsCount"];
+    for ( var i = historyEventsCount; i > 0; i-- ) {
         localSettings.values.remove(i);
     };
 
