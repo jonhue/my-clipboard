@@ -4,6 +4,8 @@ function getDate(seconds) {
     var month = d.getMonth()+1;
     var day = d.getDate();
     var hour = d.getHours();
+    var minute = d.getMinutes();
+
     hour = ( hour + 24 ) % 24;
     var mid='AM';
     if ( hour == 0 ) {
@@ -12,7 +14,6 @@ function getDate(seconds) {
         hour = hour % 12;
         mid = 'PM';
     };
-    var minute = d.getMinutes();
 
     if ( seconds ) {
         var second = d.getSeconds();
@@ -105,9 +106,6 @@ function trackHistory() {
 };
 
 function pingClipboard() {
-    window.setInterval(function(){
-        trackHistory();
-    }, 1000);
 };
 
 

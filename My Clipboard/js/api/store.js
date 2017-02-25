@@ -25,7 +25,7 @@ function checkFeatures() {
     var licenseInformation = store_app.licenseInformation;
 
     // Check for My Clipboard pro
-    if (licenseInformation.productLicenses["1"].isActive) {
+    if ( licenseInformation.productLicenses["1"].isActive ) {
         $('section#pro').hide();
         $('section#history .item:nth-last-child(4)').addClass('is-bottom');
         $('section#history #more-arrow').hide();
@@ -45,6 +45,8 @@ function checkFeatures() {
             setHistory();
             roamingSettings.values["pro_setup"] = true;
         };
+        roamingSettings.values["historyEventsCount"] = historyEventsCount;
+        roamingSettings.values["historyEventsMin"] = historyEventsMin;
     } else {};
 };
 
