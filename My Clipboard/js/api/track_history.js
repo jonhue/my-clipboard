@@ -1,4 +1,4 @@
-function getDate(seconds) {
+﻿function getDate(seconds) {
     var d = new Date();
 
     var month = d.getMonth()+1;
