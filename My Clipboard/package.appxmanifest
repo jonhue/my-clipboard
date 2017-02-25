@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="39399Slooob.MyClipboard" Version="1.3.3.0" Publisher="CN=8B0A527E-A996-4D75-92A1-6DBADD80A067" />
+  <Identity Name="39399Slooob.MyClipboard" Version="2.0.1.0" Publisher="CN=8B0A527E-A996-4D75-92A1-6DBADD80A067" />
   <mp:PhoneIdentity PhoneProductId="1b3208b8-fc2a-4330-903f-cfd8113a69db" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>My Clipboard</DisplayName>

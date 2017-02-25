@@ -1,4 +1,4 @@
-function setSetting(type, name, value) {
+﻿function setSetting(type, name, value) {
     if ( type == 'roaming' ) {
         var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
         roamingSettings.values[name] = value;

@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     var app = Windows.ApplicationModel;
     var package = app.Package.current;
     var package_id = package.id;

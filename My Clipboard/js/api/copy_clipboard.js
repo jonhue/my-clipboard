@@ -1,4 +1,4 @@
-function copyClipboard(i) {
+﻿function copyClipboard(i) {
     // Initialization
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
 
