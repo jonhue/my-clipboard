@@ -25,6 +25,7 @@ html
     user-select: none
 
 #layout-wrapper
+    display: block
     position: absolute
     width: 100%
     margin: 0
@@ -37,6 +38,8 @@ html
             #nav-open, #reset-history-wrapper
                 opacity: 0
                 pointer-events: none
+    &.hidden
+        display: none
 
 
 @media screen and (min-width: 1200px)

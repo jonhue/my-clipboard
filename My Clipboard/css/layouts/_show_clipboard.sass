@@ -1,14 +1,14 @@
 #show-clipboard
-    position: fixed
+    position: absolute
     z-index: 4
-    top: -100%
-    left: 0
+    top: 0
+    right: -100%
     width: 100%
     min-height: 100vh
     background: rgba($white, .9)
     transition: all .75s ease-in-out
     &.show
-        top: 0
+        right: 0
     #show-clipboard-close
         position: absolute
         top: 45/$dfs+rem
@@ -31,4 +31,4 @@
             .bottom
                 display: flex
                 flex-direction: row-reverse
-                margin: 35/$dfs+rem 0 0
+                margin: 75/$dfs+rem 0 0

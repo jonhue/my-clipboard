@@ -93,9 +93,13 @@
             getClipboard();
             $('section#show-clipboard textarea').focus();
             $('section#show-clipboard').addClass('show');
+            setTimeout(function() {
+                $('#layout-wrapper').addClass('hidden');
+            }, 750);
         });
         $('#show-clipboard-close').click(function() {
             $('section#show-clipboard').removeClass('show');
+            $('#layout-wrapper').removeClass('hidden');
         });
 
     } else {
