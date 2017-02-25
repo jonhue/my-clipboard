@@ -4,9 +4,10 @@
         fixBar();
         transformBar();
 
-        window.setInterval(function(){
-            trackHistory();
-        }, 1000);
+        $('#run-background-task').click(function() {
+            pingClipboard();
+            closeRun();
+        });
 
         $(window).resize(function() {
             location.reload();
