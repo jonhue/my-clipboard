@@ -6,9 +6,9 @@
 
     // Check for My Clipboard pro
     if (licenseInformation.productLicenses["1"].isActive) {
-        var maxHistoryEvents = 500;
+        var maxHistoryEvents = maxHistoryEventsPro;
     } else {
-        var maxHistoryEvents = 5;
+        var maxHistoryEvents = maxHistoryEvents;
     };
 
     // get Clipboard if changed to last event

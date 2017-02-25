@@ -1,4 +1,7 @@
-﻿function buyPro() {
+var maxHistoryEvents = 5;
+var maxHistoryEventsPro = 500;
+
+function buyPro() {
     // Initialization
     // var store_app = Windows.ApplicationModel.Store.CurrentApp;
     var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
@@ -34,7 +37,7 @@ function checkFeatures() {
         var historyEventsCount = roamingSettings.values["historyEventsCount"];
         var historyEventsMin = roamingSettings.values["historyEventsMin"];
         if ( roamingSettings.values["pro_setup"] == false ) {
-            if ( historyEventsCount <= 500 ) {
+            if ( historyEventsCount <= maxHistoryEventsPro ) {
                 historyEventsMin = 0;
             } else {
                 historyEventsMin = historyEventsMin - historyEventsCount;
