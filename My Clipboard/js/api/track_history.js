@@ -81,7 +81,8 @@ function trackHistory() {
         };
 
         // Add new Event to View
-        $('section#history').prepend('<div class="item" id=' + historyEventsCount + '><p class="time">' + composite["date"] + '</p><p class="large">' + composite["value"] + '</p></div>');
+        $('section#history').prepend('<div class="item active" id=' + historyEventsCount + '><p class="time">' + composite["date"] + '</p><p class="large">' + composite["value"] + '</p></div>');
+        $('section#history .item:nth-child(2)').removeClass('active');
 
         item = $('section#history .item#' + historyEventsCount + ' p.large');
         if ( item.html().length > 300 ) {
@@ -95,10 +96,19 @@ function trackHistory() {
         // Update Cloud
         roamingSettings.values["historyEventsCount"] = historyEventsCount;
         roamingSettings.values["historyEventsMin"] = historyEventsMin;
+
+        // Reinitialize Event Listeners
+        $('section#history p.large').click(function() {
+            copyClipboard($(this).closest('div').prop('id'));
+            showMessage('copied');
+        });
     };
 };
 
 function pingClipboard() {
+    window.setInterval(function(){
+        trackHistory();
+    }, 1000);
 };
 
 
