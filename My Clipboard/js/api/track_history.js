@@ -1,4 +1,32 @@
-﻿function trackHistory() {
+function getDate(seconds) {
+    var d = new Date();
+
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var hour = d.getHours();
+    var minute = d.getMinutes();
+
+    if ( seconds ) {
+        var second = d.getSeconds();
+
+        var date = d.getFullYear() + '-' +
+            ((''+month).length<2 ? '0' : '') + month + '-' +
+            ((''+day).length<2 ? '0' : '') + day + ' ' +
+            ((''+hour).length<2 ? '0' :'') + hour + ':' +
+            ((''+minute).length<2 ? '0' :'') + minute + ':' +
+            ((''+second).length<2 ? '0' :'') + second;
+    } else {
+        var date = d.getFullYear() + '-' +
+            ((''+month).length<2 ? '0' : '') + month + '-' +
+            ((''+day).length<2 ? '0' : '') + day + ' ' +
+            ((''+hour).length<2 ? '0' :'') + hour + ':' +
+            ((''+minute).length<2 ? '0' :'') + minute
+    };
+
+    return date
+};
+
+function trackHistory() {
     // Initialization
     // var store_app = Windows.ApplicationModel.Store.CurrentApp;
     var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
@@ -12,12 +40,14 @@
     };
 
     // get Clipboard if changed to last event
-    var text = ""
+    var text = "fg"
 
     if ( text == " " || text == "" ) {
         $('#clipboard-icon').addClass('cleared');
         $('section#history .item').removeClass('active');
     } else {
+        $('#more-arrow').show();
+        
         // Update historyEventsCount
         var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
         var historyEventsCount = roamingSettings.values["historyEventsCount"];
@@ -29,9 +59,8 @@
         };
 
         // Add new Event to History
-        var dt = new Date();
-        var date = dt.getDate() + "." + (dt.getMonth()+1) + "  -  " + dt.getHours() + ":" + dt.getMinutes();
         var composite = new Windows.Storage.ApplicationDataCompositeValue();
+        var date = getDate(false);
         composite["date"] = date;
         composite["value"] = text;
         roamingSettings.values[historyEventsCount] = composite;
