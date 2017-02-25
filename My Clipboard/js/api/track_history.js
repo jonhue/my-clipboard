@@ -41,13 +41,6 @@ function trackHistory() {
     var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
     var licenseInformation = store_app.licenseInformation;
 
-    // Check for My Clipboard pro
-    if ( licenseInformation.productLicenses["1"].isActive ) {
-        var maxHistoryEvents = maxHistoryEventsPro;
-    } else {
-        var maxHistoryEvents = maxHistoryEventsDefault;
-    };
-
     // get Clipboard if changed to last event
     var text = "fg"
 

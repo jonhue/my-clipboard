@@ -1,5 +1,14 @@
-var maxHistoryEventsDefault = 5;
-var maxHistoryEventsPro = 500;
+// Initialization
+// var store_app = Windows.ApplicationModel.Store.CurrentApp;
+var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+var licenseInformation = store_app.licenseInformation;
+
+if ( licenseInformation.productLicenses["1"].isActive ) {
+    var maxHistoryEvents = 500;
+} else {
+    var maxHistoryEvents = 5;
+};
+
 
 function buyPro() {
     // Initialization
@@ -36,8 +45,9 @@ function checkFeatures() {
         var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
         var historyEventsCount = roamingSettings.values["historyEventsCount"];
         var historyEventsMin = roamingSettings.values["historyEventsMin"];
+        maxHistoryEvents = 500;
         if ( roamingSettings.values["pro_setup"] == false ) {
-            if ( historyEventsCount <= maxHistoryEventsPro ) {
+            if ( historyEventsCount <= maxHistoryEvents ) {
                 historyEventsMin = 0;
             } else {
                 historyEventsMin = historyEventsMin - historyEventsCount;
