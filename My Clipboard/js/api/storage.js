@@ -42,7 +42,9 @@ function setHistory() {
         } else {
             $('#clipboard-icon').addClass('cleared');
         };
-        if ( historyEventsMin > 0 ) {};
+        if ( historyEventsMin > 0 ) {
+            // show Message that limit has been reached ...
+        };
     } else {
         $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
         $('#more-arrow').hide();
