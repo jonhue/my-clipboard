@@ -101,6 +101,10 @@
             $('section#show-clipboard').removeClass('show');
             $('#layout-wrapper').removeClass('hidden');
         });
+        $('#save-to-clipboard').click(function() {
+            saveToClipboard($('section#show-clipboard #textarea').text());
+            showMessage('saved');
+        });
 
     } else {
         // jQuery not loaded!

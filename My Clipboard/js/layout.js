@@ -92,10 +92,15 @@
     };
 
     function showMessage(type) {
-        if ( type == "copied" ) {
+        if ( type == 'copied' ) {
             $('#copied').addClass('show');
             setTimeout(function() {
                 $('#copied').removeClass('show');
+            }, 2000);
+        } else if ( type == 'saved' ) {
+            $('#saved').addClass('show');
+            setTimeout(function() {
+                $('#saved').removeClass('show');
             }, 2000);
         };
     };
