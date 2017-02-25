@@ -9,15 +9,13 @@ function getDate(seconds) {
     if ( seconds ) {
         var second = d.getSeconds();
 
-        var date = d.getFullYear() + '-' +
-            ((''+month).length<2 ? '0' : '') + month + '-' +
+        var date = ((''+month).length<2 ? '0' : '') + month + '-' +
             ((''+day).length<2 ? '0' : '') + day + ' ' +
             ((''+hour).length<2 ? '0' :'') + hour + ':' +
             ((''+minute).length<2 ? '0' :'') + minute + ':' +
             ((''+second).length<2 ? '0' :'') + second;
     } else {
-        var date = d.getFullYear() + '-' +
-            ((''+month).length<2 ? '0' : '') + month + '-' +
+        var date = ((''+month).length<2 ? '0' : '') + month + '-' +
             ((''+day).length<2 ? '0' : '') + day + ' ' +
             ((''+hour).length<2 ? '0' :'') + hour + ':' +
             ((''+minute).length<2 ? '0' :'') + minute
@@ -33,10 +31,10 @@ function trackHistory() {
     var licenseInformation = store_app.licenseInformation;
 
     // Check for My Clipboard pro
-    if (licenseInformation.productLicenses["1"].isActive) {
+    if ( licenseInformation.productLicenses["1"].isActive ) {
         var maxHistoryEvents = maxHistoryEventsPro;
     } else {
-        var maxHistoryEvents = maxHistoryEvents;
+        var maxHistoryEvents = maxHistoryEventsDefault;
     };
 
     // get Clipboard if changed to last event
@@ -72,14 +70,14 @@ function trackHistory() {
             var historyEventsMin = roamingSettings.values["historyEventsMin"];
             historyEventsMin++;
 
-            $('section#history .item:last-child').hide();
+            $('section#history .item').last().remove();
             if ( licenseInformation.productLicenses["1"].isActive ) {
                 // show Message that limit has been reached ...
             };
         };
 
         // Add new Event to View
-        $('section#history').prepend('<div class="item" id=' + historyEventsCount + '><p class="time">' + composite["date"] + '</p><p class="large">' + composite["value"] + '</p></div>').css('opacity', 0).slideDown('slow').animate({ opacity: 1 }, { queue: false, duration: 'slow' });
+        $('section#history').prepend('<div class="item" id=' + historyEventsCount + '><p class="time">' + composite["date"] + '</p><p class="large">' + composite["value"] + '</p></div>');
 
         item = $('section#history .item#' + historyEventsCount + ' p.large');
         if ( item.html().length > 300 ) {
@@ -89,6 +87,10 @@ function trackHistory() {
         };
 
         $('#clipboard-icon').removeClass('cleared');
+
+        // Update Cloud
+        roamingSettings.values["historyEventsCount"] = historyEventsCount;
+        roamingSettings.values["historyEventsMin"] = historyEventsMin;
     };
 };
 

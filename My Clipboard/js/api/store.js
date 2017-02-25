@@ -1,4 +1,4 @@
-var maxHistoryEvents = 5;
+var maxHistoryEventsDefault = 5;
 var maxHistoryEventsPro = 500;
 
 function buyPro() {

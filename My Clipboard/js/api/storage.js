@@ -16,10 +16,15 @@ function setHistory() {
     var num = roamingSettings.values["historyEventsCount"];
     var min = roamingSettings.values["historyEventsMin"];
     if ( num > 0 ) {
+        // Initialization
+        // var store_app = Windows.ApplicationModel.Store.CurrentApp;
+        var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+        var licenseInformation = store_app.licenseInformation;
         if ( !licenseInformation.productLicenses["1"].isActive ) {
             $('#more-arrow').show();
         };
-        for ( var i = 1; i <= num; i++ ) {
+
+        for ( var i = min; i <= num; i++ ) {
             var item = roamingSettings.values[i]
             if ( item["value"] != " " && item["value"] != "" ) {
                 $('section#history').prepend('<div class="item" id=' + i + '><p class="time">' + item["date"] + '</p><p class="large">' + item["value"] + '</p></div>');
