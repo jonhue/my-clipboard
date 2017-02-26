@@ -42,68 +42,77 @@ function trackHistory() {
     var licenseInformation = store_app.licenseInformation;
 
     // get Clipboard if changed to last event
-    var text = "fg"
+    Windows.UI.Xaml.Window.activate();
+    var content = Windows.ApplicationModel.DataTransfer.Clipboard.getContent();
+    if ( content.contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.text) ) {
+        content.getTextAsync().done(function(text){
+            var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
+            var historyEventsCount = roamingSettings.values["historyEventsCount"];
+            var item = roamingSettings.values[historyEventsCount];
 
-    if ( text == " " || text == "" ) {
-        $('#clipboard-icon').addClass('cleared');
-        $('section#history .item').removeClass('active');
-    } else {
-        if ( !licenseInformation.productLicenses["1"].isActive ) {
-            $('#more-arrow').show();
-        };
+            if ( text != item["value"] ) {
+                // Check if Clipboard is empty
+                if ( text == " " || text == "" ) {
+                    $('#clipboard-icon').addClass('cleared');
+                    $('section#history .item').removeClass('active');
+                } else {
+                    if ( !licenseInformation.productLicenses["1"].isActive ) {
+                        $('#more-arrow').show();
+                    };
 
-        // Update historyEventsCount
-        var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
-        var historyEventsCount = roamingSettings.values["historyEventsCount"];
-        historyEventsCount++;
-        if ( historyEventsCount > 0 ) {
-            $('section#history .item#no-events').fadeOut(250, function() {
-                $('section#history .item#no-events').remove();
-            });
-        };
+                    // Update historyEventsCount
+                    historyEventsCount++;
+                    if ( historyEventsCount > 0 ) {
+                        $('section#history .item#no-events').fadeOut(250, function() {
+                            $('section#history .item#no-events').remove();
+                        });
+                    };
 
-        // Add new Event to History
-        var composite = new Windows.Storage.ApplicationDataCompositeValue();
-        var date = getDate(false);
-        composite["date"] = date;
-        composite["value"] = text;
-        roamingSettings.values[historyEventsCount] = composite;
+                    // Add new Event to History
+                    var composite = new Windows.Storage.ApplicationDataCompositeValue();
+                    var date = getDate(false);
+                    composite["date"] = date;
+                    composite["value"] = text;
+                    roamingSettings.values[historyEventsCount] = composite;
 
-        // Update historyEventsMin
-        if ( historyEventsCount > maxHistoryEvents ) {
-            var historyEventsMin = roamingSettings.values["historyEventsMin"];
-            historyEventsMin = historyEventsCount - maxHistoryEvents;
+                    // Update historyEventsMin
+                    if ( historyEventsCount > maxHistoryEvents ) {
+                        var historyEventsMin = roamingSettings.values["historyEventsMin"];
+                        historyEventsMin = historyEventsCount - maxHistoryEvents;
 
-            $('section#history .item:not(#history-full, #no-items)').last().remove();
-            if ( licenseInformation.productLicenses["1"].isActive && !$('section#history .item#history-full').length ) {
-                $('section#history').append('<div class="item" id="history-full"><p class="large">We cannot find older copies :-(</p></div>');
+                        $('section#history .item:not(#history-full, #no-items)').last().remove();
+                        if ( licenseInformation.productLicenses["1"].isActive && !$('section#history .item#history-full').length ) {
+                            $('section#history').append('<div class="item" id="history-full"><p class="large">We cannot find older copies :-(</p></div>');
+                        };
+                    };
+
+                    // Add new Event to View
+                    $('section#history .item:first-child').removeClass('active');
+                    setTimeout(function() {
+                        $('section#history').prepend('<div class="item active" id=' + historyEventsCount + '><p class="time">' + composite["date"] + '</p><p class="large">' + composite["value"] + '</p></div>');
+
+                        item = $('section#history .item#' + historyEventsCount + ' p.large');
+                        if ( item.html().length > 300 ) {
+                            var text = item.text();
+                            text = text.substr(0,300) + '...';
+                            item.text(text);
+                        };
+
+                        $('#clipboard-icon').removeClass('shaking cleared');
+
+                        // Update Cloud
+                        roamingSettings.values["historyEventsCount"] = historyEventsCount;
+                        roamingSettings.values["historyEventsMin"] = historyEventsMin;
+
+                        // Reinitialize Event Listeners
+                        $('section#history p.large').click(function() {
+                            copyClipboard($(this).closest('div').prop('id'));
+                            showMessage('copied');
+                        });
+                    }, 100);
+                };
             };
-        };
-
-        // Add new Event to View
-        $('section#history .item:first-child').removeClass('active');
-        setTimeout(function() {
-            $('section#history').prepend('<div class="item active" id=' + historyEventsCount + '><p class="time">' + composite["date"] + '</p><p class="large">' + composite["value"] + '</p></div>');
-
-            item = $('section#history .item#' + historyEventsCount + ' p.large');
-            if ( item.html().length > 300 ) {
-                var text = item.text();
-                text = text.substr(0,300) + '...';
-                item.text(text);
-            };
-
-            $('#clipboard-icon').removeClass('shaking cleared');
-
-            // Update Cloud
-            roamingSettings.values["historyEventsCount"] = historyEventsCount;
-            roamingSettings.values["historyEventsMin"] = historyEventsMin;
-
-            // Reinitialize Event Listeners
-            $('section#history p.large').click(function() {
-                copyClipboard($(this).closest('div').prop('id'));
-                showMessage('copied');
-            });
-        }, 100);
+        });
     };
 };
 

@@ -4,6 +4,7 @@
     $('#clipboard-icon').addClass('shaking');
     setTimeout(function() {
         $('#clipboard-icon').addClass('cleared');
+        $('section#history .item').removeClass('active');
         setTimeout(function() {
             $('#clipboard-icon').removeClass('shaking');
         }, 750);
