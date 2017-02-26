@@ -42,7 +42,6 @@ function trackHistory() {
     var licenseInformation = store_app.licenseInformation;
 
     // get Clipboard if changed to last event
-    Windows.UI.Xaml.Window.activate();
     var content = Windows.ApplicationModel.DataTransfer.Clipboard.getContent();
     if ( content.contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.text) ) {
         content.getTextAsync().done(function(text){
