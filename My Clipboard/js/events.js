@@ -94,7 +94,7 @@
             };
         });
 
-        $('#show-clipboard-open').click(function() {
+        $('#show-clipboard-open, nav .show-clipboard-open').click(function() {
             getClipboard();
             $('section#show-clipboard').addClass('show');
             setTimeout(function() {
