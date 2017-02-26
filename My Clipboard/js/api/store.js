@@ -1,6 +1,6 @@
 ﻿// Initialization
-// var store_app = Windows.ApplicationModel.Store.CurrentApp;
-var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+var store_app = Windows.ApplicationModel.Store.CurrentApp;
+// var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
 var licenseInformation = store_app.licenseInformation;
 
 if ( licenseInformation.productLicenses["1"].isActive ) {
@@ -12,8 +12,8 @@ if ( licenseInformation.productLicenses["1"].isActive ) {
 
 function buyPro() {
     // Initialization
-    // var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+    var store_app = Windows.ApplicationModel.Store.CurrentApp;
+    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
     var licenseInformation = store_app.licenseInformation;
 
     store_app.requestProductPurchaseAsync("1");
@@ -21,16 +21,16 @@ function buyPro() {
 
 function donate() {
     // Initialization
-    // var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+    var store_app = Windows.ApplicationModel.Store.CurrentApp;
+    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
 
     store_app.requestProductPurchaseAsync("2");
 };
 
 function checkFeatures() {
     // Initialization
-    // var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+    var store_app = Windows.ApplicationModel.Store.CurrentApp;
+    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
     var licenseInformation = store_app.licenseInformation;
 
     // Check for My Clipboard pro
@@ -63,8 +63,8 @@ function checkFeatures() {
 
 (function () {
     // Initialization
-    // var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+    var store_app = Windows.ApplicationModel.Store.CurrentApp;
+    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
     var licenseInformation = store_app.licenseInformation;
 
     // Set Price for My Clipboard Pro

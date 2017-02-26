@@ -37,8 +37,8 @@
 
 function trackHistory() {
     // Initialization
-    // var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
+    var store_app = Windows.ApplicationModel.Store.CurrentApp;
+    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
     var licenseInformation = store_app.licenseInformation;
 
     // get Clipboard if changed to last event
