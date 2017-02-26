@@ -42,8 +42,8 @@ function setHistory() {
         } else {
             $('#clipboard-icon').addClass('cleared');
         };
-        if ( historyEventsMin > 0 ) {
-            // show Message that limit has been reached ...
+        if ( historyEventsMin > 0 && licenseInformation.productLicenses["1"].isActive ) {
+            $('section#history').append('<div class="item" id="history-full"><p class="large">We cannot find older copies :-(</p></div>');
         };
     } else {
         $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');

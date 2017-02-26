@@ -62,7 +62,7 @@
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <Content Include="Content\normalize.css" />
+    <Content Include="Content\normalize.min.css" />
     <Content Include="css\default.min.css" />
     <Content Include="images\BadgeLogo.scale-100.png" />
     <Content Include="images\BadgeLogo.scale-100.png" />

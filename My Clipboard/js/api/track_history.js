@@ -74,9 +74,9 @@ function trackHistory() {
             var historyEventsMin = roamingSettings.values["historyEventsMin"];
             historyEventsMin = historyEventsCount - maxHistoryEvents;
 
-            $('section#history .item').last().remove();
-            if ( licenseInformation.productLicenses["1"].isActive ) {
-                // show Message that limit has been reached ...
+            $('section#history .item:not(#history-full, #no-items)').last().remove();
+            if ( licenseInformation.productLicenses["1"].isActive && !$('section#history .item#history-full').length ) {
+                $('section#history').append('<div class="item" id="history-full"><p class="large">We cannot find older copies :-(</p></div>');
             };
         };
 
