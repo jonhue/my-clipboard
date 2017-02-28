@@ -1,12 +1,18 @@
-﻿function clearClipboard() {
-    Windows.ApplicationModel.DataTransfer.Clipboard.clear();
+if (window.jQuery) {
+    
+    ﻿function clearClipboard() {
+        Windows.ApplicationModel.DataTransfer.Clipboard.clear();
 
-    $('#clipboard-icon').addClass('shaking');
-    setTimeout(function() {
-        $('#clipboard-icon').addClass('cleared');
-        $('section#history .item').removeClass('active');
+        $('#clipboard-icon').addClass('shaking');
         setTimeout(function() {
-            $('#clipboard-icon').removeClass('shaking');
+            $('#clipboard-icon').addClass('cleared');
+            $('section#history .item').removeClass('active');
+            setTimeout(function() {
+                $('#clipboard-icon').removeClass('shaking');
+            }, 750);
         }, 750);
-    }, 750);
+    };
+
+} else {
+    // jQuery not loaded!
 };

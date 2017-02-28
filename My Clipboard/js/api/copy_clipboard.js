@@ -1,16 +1,22 @@
-﻿function copyClipboard(i) {
-    // Get text
-    var item = roamingSettings.values[i];
-    var text = item["value"];
+if (window.jQuery) {
 
-    saveToClipboard(text);
-};
+    ﻿function copyClipboard(i) {
+        // Get text
+        var item = roamingSettings.values[i];
+        var text = item["value"];
 
-function saveToClipboard(text) {
-    // Create Data Package
-    var data_package = Windows.ApplicationModel.DataTransfer.DataPackage();
-    data_package.setText(text);
+        saveToClipboard(text);
+    };
 
-    // Save to Clipboard
-    Windows.ApplicationModel.DataTransfer.Clipboard.setContent(data_package);
+    function saveToClipboard(text) {
+        // Create Data Package
+        var data_package = Windows.ApplicationModel.DataTransfer.DataPackage();
+        data_package.setText(text);
+
+        // Save to Clipboard
+        Windows.ApplicationModel.DataTransfer.Clipboard.setContent(data_package);
+    };
+
+} else {
+    // jQuery not loaded!
 };
