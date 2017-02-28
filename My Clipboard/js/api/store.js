@@ -1,38 +1,12 @@
-﻿// Initialization
-var store_app = Windows.ApplicationModel.Store.CurrentApp;
-// var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
-var licenseInformation = store_app.licenseInformation;
-
-if ( licenseInformation.productLicenses["1"].isActive ) {
-    var maxHistoryEvents = 250; // also edit value in checkFeatures() (below)
-} else {
-    var maxHistoryEvents = 5;
-};
-
-
-function buyPro() {
-    // Initialization
-    var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
-    var licenseInformation = store_app.licenseInformation;
-
+﻿function buyPro() {
     store_app.requestProductPurchaseAsync("1");
 };
 
 function donate() {
-    // Initialization
-    var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
-
     store_app.requestProductPurchaseAsync("2");
 };
 
 function checkFeatures() {
-    // Initialization
-    var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
-    var licenseInformation = store_app.licenseInformation;
-
     // Check for My Clipboard pro
     if ( licenseInformation.productLicenses["1"].isActive ) {
         $('section#pro').hide();
@@ -42,7 +16,6 @@ function checkFeatures() {
         $('#navigation h1.donate').show();
 
         // Update History
-        var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
         var historyEventsCount = roamingSettings.values["historyEventsCount"];
         var historyEventsMin = roamingSettings.values["historyEventsMin"];
         maxHistoryEvents = 250;
@@ -62,11 +35,6 @@ function checkFeatures() {
 
 
 (function () {
-    // Initialization
-    var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
-    var licenseInformation = store_app.licenseInformation;
-
     // Set Price for My Clipboard Pro
     var price_pro = licenseInformation.productLicenses["1"].formattedPrice;
     $('button#buy-pro').html('Buy for ' + price_pro);

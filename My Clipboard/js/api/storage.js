@@ -1,25 +1,17 @@
 ﻿function setSetting(type, name, value) {
     if ( type == 'roaming' ) {
-        var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
         roamingSettings.values[name] = value;
     } else if ( type == 'local' ) {
-        var localSettings = Windows.Storage.ApplicationData.current.localSettings;
         localSettings.values[name] = value;
     };
 };
 
 function setHistory() {
-    // Initialization
-    var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
     $('section#history .item').remove();
 
     var historyEventsCount = roamingSettings.values["historyEventsCount"];
     var historyEventsMin = roamingSettings.values["historyEventsMin"];
     if ( historyEventsCount > 0 ) {
-        // Initialization
-        var store_app = Windows.ApplicationModel.Store.CurrentApp;
-        // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
-        var licenseInformation = store_app.licenseInformation;
         if ( !licenseInformation.productLicenses["1"].isActive ) {
             $('#more-arrow').show();
         };
@@ -56,10 +48,6 @@ function setHistory() {
 };
 
 function resetHistory() {
-    // Initialization
-    var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
-    var localSettings = Windows.Storage.ApplicationData.current.localSettings;
-
     // Reset History
     var historyEventsCount = roamingSettings.values["historyEventsCount"];
     for ( var i = historyEventsCount; i > 0; i-- ) {
@@ -72,10 +60,6 @@ function resetHistory() {
 };
 
 function testStorage() {
-    // Initialization
-    var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
-    var localSettings = Windows.Storage.ApplicationData.current.localSettings;
-
     // Save value
     roamingSettings.values["historyEventsCount"] = 5;
     roamingSettings.values["historyEventsMin"] = 0;
@@ -107,10 +91,6 @@ function testStorage() {
 
 (function () {
     "use strict"
-
-    // Initialization
-    var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
-    var localSettings = Windows.Storage.ApplicationData.current.localSettings;
 
     // Initialize values
     if ( roamingSettings.values["click_to_copy_setup"] === null ) {

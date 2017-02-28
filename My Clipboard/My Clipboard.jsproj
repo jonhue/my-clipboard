@@ -1289,6 +1289,7 @@
     <Content Include="js\api\clear_clipboard.js" />
     <Content Include="js\api\copy_clipboard.js" />
     <Content Include="js\api\get_clipboard.js" />
+    <Content Include="js\api\init.js" />
     <Content Include="js\api\review.js" />
     <Content Include="js\api\storage.js" />
     <Content Include="js\api\store.js" />

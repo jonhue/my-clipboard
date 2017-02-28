@@ -36,19 +36,14 @@
 };
 
 function trackHistory() {
-    // Initialization
-    var store_app = Windows.ApplicationModel.Store.CurrentApp;
-    // var store_app = Windows.ApplicationModel.Store.CurrentAppSimulator;
-    var licenseInformation = store_app.licenseInformation;
-
-    // get Clipboard if changed to last event
+    // Get Clipboard
     var content = Windows.ApplicationModel.DataTransfer.Clipboard.getContent();
     if ( content.contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.text) ) {
         content.getTextAsync().done(function(text){
-            var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
             var historyEventsCount = roamingSettings.values["historyEventsCount"];
             var item = roamingSettings.values[historyEventsCount];
 
+            // If Clipboard changed to last event
             if ( text != item["value"] ) {
                 // Check if Clipboard is empty
                 if ( text == " " || text == "" ) {
@@ -110,6 +105,8 @@ function trackHistory() {
                         });
                     }, 100);
                 };
+            } else {
+                $('section#history .item:first-child').addClass('active');
             };
         });
     };
@@ -124,8 +121,6 @@ function pingClipboard() {
 
 (function () {
     "use strict"
-
-    var localSettings = Windows.Storage.ApplicationData.current.localSettings;
 
     if ( localSettings.values["listening"] = true ) {
         pingClipboard();

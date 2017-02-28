@@ -1,7 +1,4 @@
 ﻿function copyClipboard(i) {
-    // Initialization
-    var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;
-
     // Get text
     var item = roamingSettings.values[i];
     var text = item["value"];
