@@ -22,6 +22,7 @@ if (window.jQuery) {
     } else {
         var maxHistoryEvents = 5;
     };
+    var maxHistoryEventsPro = 250;
 
 } else {
     // jQuery not loaded!
