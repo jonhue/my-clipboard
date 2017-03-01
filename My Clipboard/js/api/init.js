@@ -1,4 +1,4 @@
-if (window.jQuery) {
+﻿if (window.jQuery) {
 
     // App Info Initialization
     var app = Windows.ApplicationModel;
@@ -6,6 +6,7 @@ if (window.jQuery) {
     var package_id = package.id;
     var family_name = package_id.familyName;
     var version = package_id.version;
+
 
     // Storage Initialization
     var roamingSettings = Windows.Storage.ApplicationData.current.roamingSettings;

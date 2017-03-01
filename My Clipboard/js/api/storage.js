@@ -1,4 +1,4 @@
-if (window.jQuery) {
+﻿if (window.jQuery) {
 
     function setSetting(type, name, value) {
         if ( type == 'roaming' ) {

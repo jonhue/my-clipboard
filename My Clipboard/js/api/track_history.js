@@ -1,4 +1,4 @@
-if (window.jQuery) {
+﻿if (window.jQuery) {
 
     function getDate(seconds) {
         var d = new Date();

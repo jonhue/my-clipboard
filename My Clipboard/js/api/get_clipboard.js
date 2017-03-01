@@ -1,4 +1,4 @@
-if (window.jQuery) {
+﻿if (window.jQuery) {
 
     function getClipboard() {
         var content = Windows.ApplicationModel.DataTransfer.Clipboard.getContent();
