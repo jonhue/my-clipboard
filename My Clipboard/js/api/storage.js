@@ -14,8 +14,10 @@
         var historyEventsCount = roamingSettings.values["historyEventsCount"];
         var historyEventsMin = roamingSettings.values["historyEventsMin"];
         if ( historyEventsCount > 0 ) {
-            if ( !licenseInformation.productLicenses["1"].isActive ) {
-                $('#more-arrow').show();
+            if ( connected ) {
+                if ( !licenseInformation.productLicenses["1"].isActive ) {
+                    $('#more-arrow').show();
+                };
             };
 
             for ( var i = historyEventsMin; i < historyEventsCount; i++ ) {
@@ -36,8 +38,10 @@
             } else {
                 $('#clipboard-icon').addClass('cleared');
             };
-            if ( historyEventsMin > 0 && licenseInformation.productLicenses["1"].isActive ) {
-                $('section#history').append('<div class="item" id="history-full"><p class="large">We cannot find older copies :-(</p></div>');
+            if ( connected ) {
+                if ( historyEventsMin > 0 && licenseInformation.productLicenses["1"].isActive ) {
+                    $('section#history').append('<div class="item" id="history-full"><p class="large">We cannot find older copies :-(</p></div>');
+                };
             };
         } else {
             $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
