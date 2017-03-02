@@ -1289,7 +1289,7 @@
     <Content Include="js\api\clear_clipboard.min.js" />
     <Content Include="js\api\copy_clipboard.min.js" />
     <Content Include="js\api\get_clipboard.min.js" />
-    <Content Include="js\api\init.js" />
+    <Content Include="js\api\init.min.js" />
     <Content Include="js\api\review.min.js" />
     <Content Include="js\api\storage.min.js" />
     <Content Include="js\api\store.min.js" />
