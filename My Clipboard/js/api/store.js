@@ -1,19 +1,19 @@
 ﻿if (window.jQuery) {
 
     function buyPro() {
-        if ( connected ) {
+        try {
             store_app.requestProductPurchaseAsync("1");
-        };
+        } catch(error) {};
     };
 
     function donate() {
-        if ( connected ) {
+        try {
             store_app.requestProductPurchaseAsync("2");
-        };
+        } catch(error) {};
     };
 
     function checkFeatures() {
-        if ( connected ) {
+        try {
             // Check for My Clipboard pro
             if ( licenseInformation.productLicenses["1"].isActive ) {
                 $('section#pro').hide();
@@ -38,18 +38,18 @@
                 roamingSettings.values["historyEventsCount"] = historyEventsCount;
                 roamingSettings.values["historyEventsMin"] = historyEventsMin;
             } else {};
-        };
+        } catch(error) {};
     };
 
 
     (function () {
-        if ( connected ) {
+        try {
             // Set Price for My Clipboard Pro
             var price_pro = licenseInformation.productLicenses["1"].formattedPrice;
             $('button#buy-pro').html('Buy for ' + price_pro);
 
             checkFeatures();
-        };
+        } catch(error) {};
     })();
 
 } else {

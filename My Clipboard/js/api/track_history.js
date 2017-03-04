@@ -53,11 +53,11 @@
                             $('#clipboard-icon').addClass('cleared');
                             $('section#history .item').removeClass('active');
                         } else {
-                            if ( connected ) {
+                            try {
                                 if ( !licenseInformation.productLicenses["1"].isActive ) {
                                     $('#more-arrow').show();
                                 };
-                            };
+                            } catch(error) {};
 
                             // Update historyEventsCount
                             historyEventsCount++;
@@ -83,11 +83,11 @@
                                 historyEventsMin = historyEventsCount - maxHistoryEvents;
 
                                 $('section#history .item:not(#history-full, #no-items)').last().remove();
-                                if ( connected ) {
+                                try {
                                     if ( licenseInformation.productLicenses["1"].isActive && !$('section#history .item#history-full').length ) {
                                         $('section#history').append('<div class="item" id="history-full"><p class="large">We cannot find older copies :-(</p></div>');
                                     };
-                                };
+                                } catch(error) {};
                             };
 
                             // Add new Event to View
