@@ -47,7 +47,7 @@
                     var item = roamingSettings.values[historyEventsCount];
 
                     // If Clipboard changed to last event
-                    if ( text != item["value"] ) {
+                    if ( historyEventsCount = 0 || text != item["value"] ) {
                         // Check if Clipboard is empty
                         if ( text == " " || text == "" ) {
                             $('#clipboard-icon').addClass('cleared');
