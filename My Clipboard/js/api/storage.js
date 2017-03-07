@@ -107,7 +107,25 @@
         };
 
         if ( roamingSettings.values["historyEventsCount"] === null ) {
-            roamingSettings.values["historyEventsCount"] = 0;
+            roamingSettings.values["historyEventsCount"] = 1;
+
+            // Creating example
+            var content = Windows.ApplicationModel.DataTransfer.Clipboard.getContent();
+            if ( content.contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.text) ) {
+                content.getTextAsync().done(function(text){
+                    var composite = new Windows.Storage.ApplicationDataCompositeValue();
+                    var date = getDate(false);
+                    composite["date"] = date;
+                    composite["value"] = text;
+                    roamingSettings.values[historyEventsCount] = composite;
+                });
+            } else {
+                var composite = new Windows.Storage.ApplicationDataCompositeValue();
+                var date = getDate(false);
+                composite["date"] = date;
+                composite["value"] = "Click to copy me. (Example)";
+                roamingSettings.values[historyEventsCount] = composite;
+            };
         };
         if ( roamingSettings.values["historyEventsMin"] === null ) {
             roamingSettings.values["historyEventsMin"] = 0;

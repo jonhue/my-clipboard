@@ -44,10 +44,10 @@
             if ( content.contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.text) ) {
                 content.getTextAsync().done(function(text){
                     var historyEventsCount = roamingSettings.values["historyEventsCount"];
-                    var item = roamingSettings.values[historyEventsCount];
+                    var text_before = (roamingSettings.values[historyEventsCount])["value"];
 
                     // If Clipboard changed to last event
-                    if ( historyEventsCount = 0 || text != item["value"] ) {
+                    if ( text != text_before ) {
                         // Check if Clipboard is empty
                         if ( text == " " || text == "" ) {
                             $('#clipboard-icon').addClass('cleared');
