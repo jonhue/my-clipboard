@@ -7,7 +7,12 @@
             if ( content.contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.text) ) {
                 content.getTextAsync().done(function(text){
                     var historyEventsCount = roamingSettings.values["historyEventsCount"];
-                    var text_before = (roamingSettings.values[historyEventsCount])["value"];
+                    try {
+                        var text_before = (roamingSettings.values[historyEventsCount])["value"];
+                    } catch(error) {
+                        dialog = new Windows.UI.Popups.MessageDialog("We cannot connect to your history" , "No network connection");
+                        dialog.showAsync();
+                    };
 
                     // If Clipboard changed to last event
                     if ( text != text_before ) {
