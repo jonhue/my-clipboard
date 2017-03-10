@@ -1292,10 +1292,8 @@
     <Content Include="js\api\get_clipboard.min.js" />
     <Content Include="js\api\init.min.js" />
     <Content Include="js\api\review.min.js" />
-    <Content Include="js\api\storage.js" />
     <Content Include="js\api\storage.min.js" />
     <Content Include="js\api\store.min.js" />
-    <Content Include="js\api\track_history.js" />
     <Content Include="js\api\track_history.min.js" />
     <Content Include="js\api\version.min.js" />
     <Content Include="js\events.min.js" />
