@@ -1,6 +1,6 @@
 # My Clipboard - Making your clipboard work for you.
 
-Available for download on [Windows 10](https://www.microsoft.com/library/errorpages/smarterror.aspx?correlationId=rcPS1C5pekaqYOxD.3)
+Available for download on [Windows 10](https://www.microsoft.com/de-de/store/p/my-clipboard/9ph1zmz9w2wr)
 
 ---
 
