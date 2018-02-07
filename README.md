@@ -1,8 +1,19 @@
-# My Clipboard - Making your clipboard work for you.
+<div align="center">
+	<img src="https://user-images.githubusercontent.com/13420273/35914502-c2fabd18-0c03-11e8-8e9c-656e6b8b6336.png" width="76">
+	<h1>My Clipboard</h1>
+	<h5>Making your clipboard work for you </h4>
+	<br>
+	<h4>
+		<a href="https://jonhue.me/my-clipboard">Website</a>
+		&nbsp;&nbsp;&nbsp;
+		<a href="https://www.microsoft.com/en-us/store/p/my-clipboard/9ph1zmz9w2wr">Windows</a>
+	</h4>
+</div>
+<br>
+<br>
+<br>
 
-Available for download on [Windows 10](https://www.microsoft.com/de-de/store/p/my-clipboard/9ph1zmz9w2wr)
-
----
+<img src="https://store-images.s-microsoft.com/image/apps.65487.14244558422593350.94a4bbb7-7fc2-4c07-a11e-066f21ca07fd.98c7af6b-2970-4c0b-8408-162503f337b2" height="240" align="right">
 
 ## Table of Contents
 
