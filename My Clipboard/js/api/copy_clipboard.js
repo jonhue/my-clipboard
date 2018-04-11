@@ -1,4 +1,4 @@
-if (window.jQuery) {
+﻿if (window.jQuery) {
 
     ﻿function copyClipboard(i) {
         // Get text

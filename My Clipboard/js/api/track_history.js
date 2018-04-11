@@ -7,7 +7,6 @@
             if ( content.contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.text) ) {
                 content.getTextAsync().done(function(text){
                     var historyEventsCount = localSettings.values["historyEventsCount"];
-                    console.log(historyEventsCount);
                     if (historyEventsCount == 0) {
                         addToHistory("Click to copy me. (Example)");
                     } else {

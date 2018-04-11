@@ -1,4 +1,4 @@
-if (window.jQuery) {
+﻿if (window.jQuery) {
     
     ﻿function clearClipboard() {
         Windows.ApplicationModel.DataTransfer.Clipboard.clear();
