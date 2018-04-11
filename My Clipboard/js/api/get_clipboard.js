@@ -7,7 +7,7 @@
                 $('section#show-clipboard #textarea').text(text);
             });
         } else {
-            $('section#show-clipboard #textarea').text('Unable to show clipboard content');
+            $('section#show-clipboard #textarea').text('Your clipboard is empty! o_o');
         };
     };
 

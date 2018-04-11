@@ -32,9 +32,9 @@
                     } else {
                         historyEventsMin = historyEventsMin - historyEventsCount;
                     };
-                    setHistory();
-                    roamingSettings.values["pro_setup"] = true;
                 };
+                setHistory();
+                roamingSettings.values["pro_setup"] = true;
                 localSettings.values["historyEventsCount"] = historyEventsCount;
                 localSettings.values["historyEventsMin"] = historyEventsMin;
             } else {};
