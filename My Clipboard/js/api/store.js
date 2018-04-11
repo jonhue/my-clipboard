@@ -23,8 +23,8 @@
                 $('#navigation h1.donate').show();
 
                 // Update History
-                var historyEventsCount = roamingSettings.values["historyEventsCount"];
-                var historyEventsMin = roamingSettings.values["historyEventsMin"];
+                var historyEventsCount = localSettings.values["historyEventsCount"];
+                var historyEventsMin = localSettings.values["historyEventsMin"];
                 maxHistoryEvents = 250;
                 if ( roamingSettings.values["pro_setup"] == false ) {
                     if ( historyEventsCount <= maxHistoryEvents ) {
@@ -35,8 +35,8 @@
                     setHistory();
                     roamingSettings.values["pro_setup"] = true;
                 };
-                roamingSettings.values["historyEventsCount"] = historyEventsCount;
-                roamingSettings.values["historyEventsMin"] = historyEventsMin;
+                localSettings.values["historyEventsCount"] = historyEventsCount;
+                localSettings.values["historyEventsMin"] = historyEventsMin;
             } else {};
         } catch(error) {};
     };

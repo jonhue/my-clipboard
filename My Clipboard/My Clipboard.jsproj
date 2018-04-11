@@ -134,6 +134,7 @@
     <Content Include="lib\winjs-4.0.1\css\ui-light.css" />
     <Content Include="lib\winjs-4.0.1\css\ui-dark.css" />
     <Content Include="lib\winjs-4.0.1\fonts\Symbols.ttf" />
+    <None Include="Package.xml" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <None Include="Package.StoreAssociation.xml" />
     <None Include="My Clipboard_StoreKey.pfx" />

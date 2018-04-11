@@ -6,9 +6,9 @@
             var content = Windows.ApplicationModel.DataTransfer.Clipboard.getContent();
             if ( content.contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.text) ) {
                 content.getTextAsync().done(function(text){
-                    var historyEventsCount = roamingSettings.values["historyEventsCount"];
+                    var historyEventsCount = localSettings.values["historyEventsCount"];
                     try {
-                        var text_before = (roamingSettings.values[historyEventsCount])["value"];
+                        var text_before = (localSettings.values[historyEventsCount])["value"];
                     } catch(error) {
                         dialog = new Windows.UI.Popups.MessageDialog("We cannot connect to your history" , "No network connection");
                         dialog.showAsync();
@@ -40,13 +40,13 @@
                             var date = getDate(false);
                             composite["date"] = date;
                             composite["value"] = text;
-                            roamingSettings.values[historyEventsCount] = composite;
+                            localSettings.values[historyEventsCount] = composite;
 
                             // Update historyEventsMin
                             if ( historyEventsCount > maxHistoryEvents ) {
-                                var historyEventsMin = roamingSettings.values["historyEventsMin"];
+                                var historyEventsMin = localSettings.values["historyEventsMin"];
                                 if ( historyEventsCount > maxHistoryEventsPro ) {
-                                    roamingSettings.values.remove(historyEventsMin);
+                                    localSettings.values.remove(historyEventsMin);
                                 };
                                 historyEventsMin = historyEventsCount - maxHistoryEvents;
 
@@ -73,8 +73,8 @@
                                 $('#clipboard-icon').removeClass('shaking cleared');
 
                                 // Update Cloud
-                                roamingSettings.values["historyEventsCount"] = historyEventsCount;
-                                roamingSettings.values["historyEventsMin"] = historyEventsMin;
+                                localSettings.values["historyEventsCount"] = historyEventsCount;
+                                localSettings.values["historyEventsMin"] = historyEventsMin;
 
                                 // Reinitialize Event Listeners
                                 $('section#history p.large').click(function() {

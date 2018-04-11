@@ -2,7 +2,7 @@ if (window.jQuery) {
 
     ﻿function copyClipboard(i) {
         // Get text
-        var item = roamingSettings.values[i];
+        var item = localSettings.values[i];
         if (item) {
             var text = item["value"];
             saveToClipboard(text);
