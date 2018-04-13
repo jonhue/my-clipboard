@@ -1,3 +1,4 @@
+"use strict";
 // import App from 'app';
 // import Account from 'account';
 // import History from 'history';
@@ -5,7 +6,6 @@
 //
 // let app = new App(),
 //     account = new Account(app);
-
 console.log('hooray');
 // $(document).ready(function() {
 //     console.log('hooray');

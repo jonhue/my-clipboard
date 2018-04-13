@@ -1,4 +1,3 @@
-import $ from '../Scripts/jquery-3.3.1';
 import Clipboard from 'clipboard';
 
 class Layout {
