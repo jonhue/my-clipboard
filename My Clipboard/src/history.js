@@ -1,13 +1,11 @@
 import Entry from './entry';
-import Layout from './layout';
 
 class History {
 
-    constructor( account, items = [] ) {
+    constructor(account) {
         this._account = account;
-        this._items = items;
-        this._account.app.addLocalSetting( 'historyItems', this._items );
-        window.history = this;
+        this._items = [];
+        account.app.addLocalSetting( 'historyItems', this._items );
     }
 
     get account() {
@@ -34,7 +32,7 @@ class History {
     }
 
     ping() {
-        setInterval(function() {
+        setInterval(() => {
             this.track();
         }, 1000);
     }
@@ -42,12 +40,12 @@ class History {
     track() {
         if (document.hasFocus()) {
             // Get Clipboard
-            Clipboard.read(function(text) {
+            Clipboard.read((text) => {
                 // If Clipboard changed to last event
                 if ( this.last && text != this.last.text ) {
                     // Check if Clipboard is empty
                     if ( text === ' ' || text === '' ) {
-                        Layout.clipboardCleared();
+                        this.account.layout.clipboardCleared();
                     } else {
                         if (length(this.items) == History.limit) {
                             this.items.pop();
@@ -55,21 +53,19 @@ class History {
                         new Entry( this, text );
                     }
                 } else {
-                    Layout.lastItemActive();
+                    this.account.layout.lastItemActive();
                 }
             });
         }
     }
 
     static init(account) {
-        if ( this.account.app.localSettings.historyItems === Array ) {
-            let items = [];
-            this.account.app.localSettings.values.historyItems.forEach(function(entry) {
-                items.push(new Entry( entry.text, entry.date ));
+        let history = new History(account);
+        if ( account.app.localSettings.historyItems === Array ) {
+            account.app.localSettings.values.historyItems.forEach((entry) => {
+                new Entry( history, entry.text, entry.date );
             });
-            history = new History( account, items );
         } else {
-            history = new History(account);
             new Entry( history, 'Click to copy me. (Example)' );
         }
         history.ping();

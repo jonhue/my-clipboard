@@ -3,7 +3,7 @@ class Clipboard {
     static read(callback) {
         let content = Windows.ApplicationModel.DataTransfer.Clipboard.getContent();
         if (content.contains(Windows.ApplicationModel.DataTransfer.StandardDataFormats.text)) {
-            content.getTextAsync().done(function(text) {
+            content.getTextAsync().done((text) => {
                 callback(text);
             });
         } else {

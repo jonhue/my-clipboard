@@ -1,5 +1,3 @@
-import Layout from './layout';
-
 class Entry {
 
     constructor( history, text, date = new Date() ) {
@@ -7,7 +5,9 @@ class Entry {
         this._text = text;
         this._date = date;
         this._history.items.unshift(this);
-        Layout.renderHistory();
+        if (this._history.account.layout) {
+            this._history.account.layout.renderHistory();
+        }
     }
 
     get history() {

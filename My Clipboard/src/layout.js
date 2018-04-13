@@ -42,10 +42,10 @@ class Layout {
 
     clearClipboard() {
         $('#clipboard-icon').addClass('shaking');
-        setTimeout(function() {
+        setTimeout(() => {
             $('#clipboard-icon').addClass('cleared');
             $('section#history .item').removeClass('active');
-            setTimeout(function() {
+            setTimeout(() => {
                 $('#clipboard-icon').removeClass('shaking');
             }, 750);
         }, 750);
@@ -57,7 +57,7 @@ class Layout {
     }
 
     readClipboard() {
-        Clipboard.read(function(text) {
+        Clipboard.read((text) => {
             $('section#show-clipboard #textarea').text(text);
         });
     }

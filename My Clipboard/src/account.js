@@ -13,6 +13,20 @@ class Account {
         this._app = val;
     }
 
+    get history() {
+        return this._history;
+    }
+    set history(val) {
+        this._history = val;
+    }
+
+    get layout() {
+        return this._layout;
+    }
+    set layout(val) {
+        this._layout = val;
+    }
+
     get pro() {
         return this.app.licenseInformation.productLicenses['1'].isActive;
     }

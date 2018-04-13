@@ -6,7 +6,7 @@ import Layout from './layout';
 let app = new App(),
     account = new Account(app);
 
-$(document).ready(function() {
-    // let history = History.init(account);
-    let layout = Layout.init(account);
+$(document).ready(() => {
+    account.history = History.init(account);
+    account.layout = Layout.init(account);
 });
