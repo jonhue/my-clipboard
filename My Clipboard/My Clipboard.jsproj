@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Uap.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Uap.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -39,6 +41,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>5a61b34b-27d6-434a-9891-167cfd2ebb28</ProjectGuid>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '15.0'">
@@ -117,18 +120,27 @@
     <Content Include="images\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="images\StoreLogo.png" />
     <Content Include="images\Wide310x150Logo.scale-200.png" />
-    <Content Include="js\api\clear_clipboard.js" />
-    <Content Include="js\api\copy_clipboard.js" />
-    <Content Include="js\api\date.js" />
-    <Content Include="js\api\get_clipboard.js" />
-    <Content Include="js\api\init.js" />
-    <Content Include="js\api\review.js" />
-    <Content Include="js\api\storage.js" />
-    <Content Include="js\api\store.js" />
-    <Content Include="js\api\track_history.js" />
-    <Content Include="js\api\version.js" />
-    <Content Include="js\events.js" />
-    <Content Include="js\layout.js" />
+    <Content Include="js\src\account.js" />
+    <Content Include="js\src\app.js" />
+    <Content Include="js\src\clipboard.js" />
+    <Content Include="js\src\date.js" />
+    <Content Include="js\src\entry.js" />
+    <Content Include="js\src\history.js" />
+    <Content Include="js\src\init.js" />
+    <Content Include="js\src\layout.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="src\account.js" />
+    <Content Include="src\app.js" />
+    <Content Include="src\clipboard.js" />
+    <Content Include="src\date.js" />
+    <Content Include="src\entry.js" />
+    <Content Include="src\events.js" />
+    <Content Include="src\history.js" />
+    <Content Include="src\init.js" />
+    <Content Include="src\layout.js" />
+    <Content Include="src\layout1.js" />
+    <Content Include="tsconfig.json" />
     <Content Include="lib\winjs-4.0.1\js\base.js" />
     <Content Include="lib\winjs-4.0.1\js\ui.js" />
     <Content Include="lib\winjs-4.0.1\css\ui-light.css" />
@@ -136,12 +148,17 @@
     <Content Include="lib\winjs-4.0.1\fonts\Symbols.ttf" />
     <None Include="Package.xml" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <None Include="Package.StoreAssociation.xml" />
     <None Include="My Clipboard_StoreKey.pfx" />
     <Content Include="packages.config" />
     <None Include="My Clipboard_TemporaryKey.pfx" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4a0dddb5-7a95-4fbf-97cc-616d07737a77}" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Uap.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Uap.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.jsproj.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.jsproj.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment
        that target and the DisableFastUpToDateCheck PropertyGroup. 
        Other similar extension points exist, see Microsoft.Common.targets.

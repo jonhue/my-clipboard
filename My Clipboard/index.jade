@@ -9,24 +9,12 @@ html
         meta(charset="utf-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title My Clipboard
-        script(src="Scripts/jquery-3.2.1.min.js")
+        script(src="Scripts/jquery-3.3.1.min.js")
         link(href="Content/normalize.css", rel="stylesheet")
         link(href="css/default.min.css", rel="stylesheet")
     body
         #app-wrapper
             include app/_app.jade
 
-        script(src="js/layout.js")
-
-        script(src="js/api/init.js")
-        script(src="js/api/date.js")
-        script(src="js/api/storage.js")
-        script(src="js/api/track_history.js")
-        script(src="js/api/clear_clipboard.js")
-        script(src="js/api/copy_clipboard.js")
-        script(src="js/api/get_clipboard.js")
-        script(src="js/api/review.js")
-        script(src="js/api/store.js")
-        script(src="js/api/version.js")
-
-        script(src="js/events.js")
+        script(src="js/date.js")
+        script(src="js/src/init.js")
