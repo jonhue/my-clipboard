@@ -2,7 +2,7 @@
 // import Account from 'account';
 // import History from 'history';
 // import Layout from 'layout';
-import Clipboard from 'clipboard';
+import Clipboard from './clipboard';
 Clipboard.write('test');
 
 // let app = new App(),
