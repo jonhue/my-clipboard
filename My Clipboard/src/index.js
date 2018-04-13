@@ -2,13 +2,13 @@
 // import Account from 'account';
 // import History from 'history';
 // import Layout from 'layout';
-//
+import Clipboard from 'clipboard';
+Clipboard.write('test');
+
 // let app = new App(),
 //     account = new Account(app);
 
-console.log('hooray');
 // $(document).ready(function() {
-//     console.log('hooray');
 //     // History.init(account);
 //     //
 //     // Layout.checkFeatures();
