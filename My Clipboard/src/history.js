@@ -1,12 +1,12 @@
-import Entry from 'entry';
-import Layout from 'layout';
+import Entry from './entry';
+import Layout from './layout';
 
 class History {
 
     constructor( account, items = [] ) {
         this._account = account;
         this._items = items;
-        this._app.addLocalSetting( 'historyItems', this._items );
+        this._account.app.addLocalSetting( 'historyItems', this._items );
         window.history = this;
     }
 
@@ -22,7 +22,7 @@ class History {
     }
     set items(val) {
         this._items = val;
-        this.app.addLocalSetting( 'historyItems', this._items );
+        this.account.app.addLocalSetting( 'historyItems', this._items );
     }
 
     last() {
@@ -62,9 +62,9 @@ class History {
     }
 
     static init(account) {
-        if ( this.app.localSettings.historyItems === Array ) {
+        if ( this.account.app.localSettings.historyItems === Array ) {
             let items = [];
-            this.app.localSettings.values.historyItems.forEach(function(entry) {
+            this.account.app.localSettings.values.historyItems.forEach(function(entry) {
                 items.push(new Entry( entry.text, entry.date ));
             });
             history = new History( account, items );
