@@ -25,8 +25,8 @@ class History {
     }
 
     last() {
-        if (length(this.items) > 0) {
-            return this.items[length(this.items) - 1];
+        if (this.items.length > 0) {
+            return this.items[this.items.length - 1];
         } else {
             return null;
         }
@@ -48,7 +48,7 @@ class History {
                     if ( text === ' ' || text === '' ) {
                         this.account.layout.clipboardCleared();
                     } else {
-                        if (length(this.items) == History.limit) {
+                        if (this.items.length == History.limit) {
                             this.items.pop();
                         }
                         new Entry( this, text );
@@ -61,9 +61,10 @@ class History {
     }
 
     static init(account) {
-        let history = new History(account);
-        if ( account.app.localSettings.historyItems === Array ) {
-            account.app.localSettings.values.historyItems.forEach((entry) => {
+        let items = account.app.localSettings.historyItems,
+            history = new History(account);
+        if ( items === Array && items.length > 0 ) {
+            items.forEach((entry) => {
                 new Entry( history, entry.text, entry.date );
             });
         } else {
@@ -73,8 +74,11 @@ class History {
         return history;
     }
 
-    static reset() {
-        return new History();
+    reset() {
+        let history = new History(this.account);
+        new Entry( history, 'Click to copy me. (Example)' );
+        history.ping();
+        return history;
     }
 
     static limit() {

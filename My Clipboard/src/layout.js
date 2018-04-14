@@ -45,25 +45,41 @@ class Layout {
     }
 
     clearClipboard() {
+        Clipboard.clear();
         $('#clipboard-icon').addClass('shaking');
         setTimeout(() => {
-            $('#clipboard-icon').addClass('cleared');
-            $('section#history .item').removeClass('active');
+            this.clipboardCleared();
             setTimeout(() => {
                 $('#clipboard-icon').removeClass('shaking');
             }, 750);
         }, 750);
     }
-
     clipboardCleared() {
         $('#clipboard-icon').addClass('cleared');
         $('section#history .item').removeClass('active');
     }
 
-    readClipboard() {
+    openClipboard() {
         Clipboard.read((text) => {
             $('section#show-clipboard #textarea').text(text);
+            $('section#show-clipboard').addClass('show');
+            setTimeout(() => {
+                $('section#show-clipboard #textarea').focus();
+            }, 750);
         });
+    }
+    saveClipboard() {
+        Clipboard.write($('section#show-clipboard #textarea').text());
+        this.showMessage('saved');
+    }
+    closeClipboard() {
+        $('section#show-clipboard').removeClass('show');
+        $('#layout-wrapper').removeClass('hidden');
+    }
+
+    copyToClipboard() {
+        Clipboard.write($(this).closest('div').prop('id'));
+        this.showMessage('copied');
     }
 
     lastItemActive() {
@@ -130,10 +146,16 @@ class Layout {
         });
     }
 
-    closeRun() {
+    closeSetup() {
+        this.account.isSetup = true;
         $('section#run').addClass('hide');
         $('header').removeClass('dark');
         $('#layout-wrapper').removeClass('down');
+    }
+    skipSetup() {
+        if (this.account.isSetup) {
+            this.closeSetup();
+        }
     }
 
     openResume() {
@@ -141,6 +163,14 @@ class Layout {
     }
     closeResume() {
         $('section#resume').hide();
+    }
+
+    showClickToCopy() {
+        $('#click-to-copy').addClass('show');
+        setTimeout(() => {
+            $('#click-to-copy').removeClass('show');
+            $('#click-to-copy').addClass('hide');
+        }, 4000);
     }
 
     // clearHistoryLayout() {
@@ -172,6 +202,7 @@ class Layout {
         layout.setReviewUrl();
         layout.fixBar();
         layout.transformBar();
+        layout.skipSetup();
         layout.renderHistory();
 
         $(window).resize(() => {
@@ -183,7 +214,7 @@ class Layout {
         });
 
         $('#run-background-task').click(() => {
-            layout.closeRun();
+            layout.closeSetup();
         });
 
         $('#up').click(() => {
@@ -231,8 +262,7 @@ class Layout {
             layout.clearClipboard();
         });
         $('#reset-history').click(() => {
-            layout.resetHistory();
-            layout.clearHistoryLayout();
+            layout.account.history.reset();
         });
 
         $('section#resume button').click(() => {
@@ -241,35 +271,23 @@ class Layout {
         });
 
         $('section#history p.large').click(() => {
-            layout.copyClipboard($(this).closest('div').prop('id'));
-            layout.showMessage('copied');
+            layout.copyToClipboard();
         });
 
         $('section#history').hover(() => {
             if ( !$('#click-to-copy').hasClass('hide') ) {
-                $('#click-to-copy').addClass('show');
-                setTimeout(() => {
-                    $('#click-to-copy').removeClass('show');
-                    $('#click-to-copy').addClass('hide');
-                }, 4000);
+                layout.showClickToCopy();
             };
         });
 
         $('#show-clipboard-open, nav .show-clipboard-open').click(() => {
-            layout.getClipboard();
-            $('section#show-clipboard').addClass('show');
-            setTimeout(() => {
-                $('section#show-clipboard #textarea').focus();
-                $('#layout-wrapper').addClass('hidden');
-            }, 750);
+            layout.openClipboard();
         });
         $('#show-clipboard-close').click(() => {
-            $('section#show-clipboard').removeClass('show');
-            $('#layout-wrapper').removeClass('hidden');
+            layout.closeClipboard();
         });
         $('#save-to-clipboard').click(() => {
-            layout.saveToClipboard($('section#show-clipboard #textarea').text());
-            layout.showMessage('saved');
+            layout.saveClipboard();
         });
 
         return layout;
