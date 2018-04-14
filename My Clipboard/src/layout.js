@@ -154,7 +154,7 @@ class Layout {
     }
     skipSetup() {
         if (this.account.isSetup) {
-            this.closeSetup();
+            $('section#run').hide();
         }
     }
 

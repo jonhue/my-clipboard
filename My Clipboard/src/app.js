@@ -16,18 +16,18 @@ class App {
         return this.packageId.version;
     }
 
-    get roamingSettings() {
-        return Windows.Storage.ApplicationData.current.roamingSettings;
+    roamingSettings(key) {
+        return Windows.Storage.ApplicationData.current.roamingSettings.values[key];
     }
     addRoamingSetting( key, value ) {
-        Windows.Storage.ApplicationData.current.roamingSettings[key] = value;
+        Windows.Storage.ApplicationData.current.roamingSettings.values[key] = value;
     }
 
-    get localSettings() {
-        return Windows.Storage.ApplicationData.current.localSettings;
+    localSettings(key) {
+        return Windows.Storage.ApplicationData.current.localSettings.values[key];
     }
     addLocalSetting( key, value ) {
-        Windows.Storage.ApplicationData.current.localSettings[key] = value;
+        Windows.Storage.ApplicationData.current.localSettings.values[key] = value;
     }
 
     get store() {

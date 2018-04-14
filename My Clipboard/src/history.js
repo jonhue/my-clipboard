@@ -6,7 +6,7 @@ class History {
     constructor(account) {
         this._account = account;
         this._items = [];
-        account.app.addLocalSetting( 'historyItems', this._items );
+        account.app.addLocalSetting( 'historyItems', JSON.stringify(this._items) );
     }
 
     get account() {
@@ -17,11 +17,12 @@ class History {
     }
 
     get items() {
+        this._items = JSON.parse(this.account.app.localSettings('historyItems'));
         return this._items;
     }
     set items(val) {
         this._items = val;
-        this.account.app.addLocalSetting( 'historyItems', this._items );
+        this.account.app.addLocalSetting( 'historyItems', JSON.stringify(this._items) );
     }
 
     last() {
@@ -61,7 +62,7 @@ class History {
     }
 
     static init(account) {
-        let items = account.app.localSettings.historyItems,
+        let items = JSON.parse(account.app.localSettings('historyItems')),
             history = new History(account);
         if ( items === Array && items.length > 0 ) {
             items.forEach((entry) => {

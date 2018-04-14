@@ -40,7 +40,7 @@ class Account {
     }
 
     get isSetup() {
-        return this.app.roamingSettings.isSetup;
+        return this.app.roamingSettings('isSetup');
     }
     set isSetup(val) {
         this.app.addRoamingSetting( 'isSetup', val );
