@@ -43,21 +43,21 @@ class History {
         if (document.hasFocus()) {
             // Get Clipboard
             Clipboard.read((text) => {
-                // If Clipboard changed to last event
-                if ( this.last && text != this.last.text ) {
-                    // Check if Clipboard is empty
-                    if ( text === ' ' || text === '' ) {
-                        this.account.layout.clipboardCleared();
-                    } else {
-                        if (this.items.length == History.limit) {
+                // Check if Clipboard is empty
+                if ( text == ' ' || text == '' ) {
+                    this.account.layout.clipboardCleared();
+                } else {
+                    // If Clipboard changed to last event
+                    if ( this.last && text != this.last.text ) {
+                        if (this.items.length >= History.limit) {
                             let items = this.items
                             items.pop();
                             this.items = items;
                         }
                         new Entry( this, text );
+                    } else {
+                        this.account.layout.lastItemActive();
                     }
-                } else {
-                    this.account.layout.lastItemActive();
                 }
             });
         }
