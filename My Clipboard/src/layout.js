@@ -165,11 +165,113 @@ class Layout {
 
     static init(account) {
         let layout = new Layout(account);
+
         layout.checkFeatures();
         layout.setPrices();
         layout.setVersion();
         layout.setReviewUrl();
+        layout.fixBar();
+        layout.transformBar();
         layout.renderHistory();
+
+        $(window).resize(() => {
+            location.reload();
+        });
+        $(window).scroll(() => {
+            layout.fixBar();
+            layout.transformBar();
+        });
+
+        $('#run-background-task').click(() => {
+            layout.closeRun();
+        });
+
+        $('#up').click(() => {
+            layout.up();
+        });
+        $('#down').click(() => {
+            layout.down();
+        });
+
+        $('#navigation h1.clipboard').click(() => {
+            layout.toggleMenu();
+            layout.closePro();
+            layout.up();
+        });
+        $('#navigation h1.pro').click(() => {
+            layout.toggleMenu();
+            layout.openPro();
+        });
+        $('#nav-open, #nav-close').click(() => {
+            layout.toggleMenu();
+        });
+        $('#donate').click(() => {
+            layout.donate();
+            layout.toggleMenu();
+            layout.openResume();
+        });
+
+        $('#pro .top').click(() => {
+            layout.openPro();
+        });
+        $('#pro-close').click(() => {
+            layout.closePro();
+        });
+        $('#buy-pro').click(() => {
+            layout.buyPro();
+            layout.closePro();
+            layout.openResume();
+        });
+        $('#more-arrow').click(() => {
+            layout.openPro();
+        });
+
+
+        $('#clear-clipboard').click(() => {
+            layout.clearClipboard();
+        });
+        $('#reset-history').click(() => {
+            layout.resetHistory();
+            layout.clearHistoryLayout();
+        });
+
+        $('section#resume button').click(() => {
+            layout.checkFeatures();
+            layout.closeResume();
+        });
+
+        $('section#history p.large').click(() => {
+            layout.copyClipboard($(this).closest('div').prop('id'));
+            layout.showMessage('copied');
+        });
+
+        $('section#history').hover(() => {
+            if ( !$('#click-to-copy').hasClass('hide') ) {
+                $('#click-to-copy').addClass('show');
+                setTimeout(() => {
+                    $('#click-to-copy').removeClass('show');
+                    $('#click-to-copy').addClass('hide');
+                }, 4000);
+            };
+        });
+
+        $('#show-clipboard-open, nav .show-clipboard-open').click(() => {
+            layout.getClipboard();
+            $('section#show-clipboard').addClass('show');
+            setTimeout(() => {
+                $('section#show-clipboard #textarea').focus();
+                $('#layout-wrapper').addClass('hidden');
+            }, 750);
+        });
+        $('#show-clipboard-close').click(() => {
+            $('section#show-clipboard').removeClass('show');
+            $('#layout-wrapper').removeClass('hidden');
+        });
+        $('#save-to-clipboard').click(() => {
+            layout.saveToClipboard($('section#show-clipboard #textarea').text());
+            layout.showMessage('saved');
+        });
+
         return layout;
     }
 

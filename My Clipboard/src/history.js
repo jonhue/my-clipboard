@@ -1,3 +1,4 @@
+import Clipboard from './clipboard';
 import Entry from './entry';
 
 class History {
