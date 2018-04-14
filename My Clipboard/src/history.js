@@ -54,7 +54,7 @@ class History {
                             items.pop();
                             this.items = items;
                         }
-                        new Entry( this, text );
+                        // new Entry( this, text );
                     } else {
                         this.account.layout.lastItemActive();
                     }
@@ -68,10 +68,10 @@ class History {
             history = new History(account);
         if ( items.length > 0 ) {
             items.forEach((entry) => {
-                new Entry( history, entry.text, entry.date );
+                new Entry( history, entry._text, entry._date );
             });
         } else {
-            new Entry( history, 'Click to copy me. (Example)' );
+            new Entry(history);
         }
         history.ping();
         return history;
@@ -79,60 +79,15 @@ class History {
 
     reset() {
         let history = new History(this.account);
-        new Entry( history, 'Click to copy me. (Example)' );
+        new Entry(history);
         history.ping();
         return history;
     }
 
     static limit() {
-        return 250;
+        return 10;
     }
 
 }
 
 export default History;
-
-
-
-
-// function setHistory() {
-//     $('section#history .item').remove();
-//
-//     var historyEventsCount = localSettings.values["historyEventsCount"];
-//     var historyEventsMin = localSettings.values["historyEventsMin"];
-//     if ( historyEventsCount > 0 ) {
-//         try {
-//             if ( !licenseInformation.productLicenses["1"].isActive ) {
-//                 $('#more-arrow').show();
-//             };
-//         } catch(error) {};
-//
-//         for ( var i = historyEventsMin; i < historyEventsCount; i++ ) {
-//             var item = localSettings.values[i]
-//             $('section#history').prepend('<div class="item" id=' + i + '><p class="time">' + item["date"] + '</p><p class="large">' + item["value"] + '</p></div>');
-//
-//             item = $('section#history .item#' + i + ' p.large');
-//             if ( item.html().length > 300 ) {
-//                 var text = item.text();
-//                 text = text.substr(0,300) + '...';
-//                 item.text(text);
-//             };
-//         };
-//         if ( (localSettings.values[historyEventsCount])["value"] != " " && (localSettings.values[historyEventsCount])["value"] != "" ) {
-//             $('section#history .item:first-child').addClass('active');
-//         } else {
-//             $('#clipboard-icon').addClass('cleared');
-//         };
-//         try {
-//             if ( historyEventsMin > 0 && licenseInformation.productLicenses["1"].isActive ) {
-//                 $('section#history').append('<div class="item" id="history-full"><p class="large">There are no older clipboard contents.</p></div>');
-//             };
-//         } catch(error) {};
-//     } else {
-//         clearHistoryLayout();
-//     };
-//
-//     if ( roamingSettings.values["click_to_copy_setup"] ) {
-//         $('#click-to-copy').addClass('hide');
-//     };
-// };

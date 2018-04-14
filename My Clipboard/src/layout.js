@@ -18,7 +18,32 @@ class Layout {
     }
 
     renderHistory() {
-        // ...
+        $('section#history .item').remove();
+        if ( this.account.history.items.length > 0 ) {
+            this.account.history.items.forEach(( entry, i ) => {
+                $('section#history').append('<div class="item" id=' + i + '><p class="time">' + entry._date + '</p><p class="large">' + entry._text + '</p></div>');
+                let item = $('section#history .item#' + i + ' p.large');
+                if ( item.text().length > 300 ) {
+                    let text = item.text();
+                    text = text.substr(0,300) + '...';
+                    item.text(text);
+                };
+            });
+            $('section#history p.large').click(() => {
+                this.copyToClipboard();
+            });
+            if (this.account.pro) {
+                $('#more-arrow').hide();
+            } else {
+                $('#more-arrow').show();
+            };
+            // $('section#history .item:first-child').addClass('active');
+            // $('#clipboard-icon').removeClass('shaking cleared');
+            // $('#clipboard-icon').addClass('cleared');
+        } else {
+            $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
+            $('#more-arrow').hide();
+        }
     }
 
     checkFeatures() {
@@ -154,7 +179,8 @@ class Layout {
     }
     skipSetup() {
         if (this.account.isSetup) {
-            $('section#run').hide();
+            $('section#run').addClass('hide hidden');
+            $('#layout-wrapper').removeClass('down');
         }
     }
 
@@ -164,20 +190,6 @@ class Layout {
     closeResume() {
         $('section#resume').hide();
     }
-
-    showClickToCopy() {
-        $('#click-to-copy').addClass('show');
-        setTimeout(() => {
-            $('#click-to-copy').removeClass('show');
-            $('#click-to-copy').addClass('hide');
-        }, 4000);
-    }
-
-    // clearHistoryLayout() {
-    //     $('section#history .item').remove();
-    //     $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
-    //     $('#more-arrow').hide();
-    // }
 
     showMessage(type) {
         if ( type == 'copied' ) {
@@ -237,7 +249,7 @@ class Layout {
             layout.toggleMenu();
         });
         $('#donate').click(() => {
-            layout.donate();
+            account.donate();
             layout.toggleMenu();
             layout.openResume();
         });
@@ -249,7 +261,7 @@ class Layout {
             layout.closePro();
         });
         $('#buy-pro').click(() => {
-            layout.buyPro();
+            account.buyPro();
             layout.closePro();
             layout.openResume();
         });
@@ -274,12 +286,6 @@ class Layout {
             layout.copyToClipboard();
         });
 
-        $('section#history').hover(() => {
-            if ( !$('#click-to-copy').hasClass('hide') ) {
-                layout.showClickToCopy();
-            };
-        });
-
         $('#show-clipboard-open, nav .show-clipboard-open').click(() => {
             layout.openClipboard();
         });
@@ -293,30 +299,6 @@ class Layout {
         return layout;
     }
 
-}
-
-function renderDate(date) {
-    let month = date.getMonth() + 1,
-        day = date.getDate(),
-        hour = date.getHours(),
-        minute = date.getMinutes();
-
-    hour = ( hour + 24 ) % 24;
-    let mid = 'AM';
-    if ( hour == 0 ) {
-        hour = 12;
-    } else if ( hour > 12 ) {
-        hour = hour % 12;
-        mid = 'PM';
-    };
-
-    let d = ((''+month).length<2 ? '0' : '') + month + '/' +
-        ((''+day).length<2 ? '0' : '') + day + ' - ' +
-        ((''+hour).length<2 ? '0' :'') + hour + ':' +
-        ((''+minute).length<2 ? '0' :'') + minute + '  ' +
-        mid;
-
-    return d;
 }
 
 export default Layout;

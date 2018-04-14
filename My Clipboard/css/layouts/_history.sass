@@ -10,12 +10,10 @@
         &.active
             p.large
                 color: $highlight
-        &:first-child
+        &:nth-child(3)
             padding-top: 100/$dfs+rem
-        &:nth-last-child(4)
-            padding-bottom: 250/$dfs+rem
-            &.is-bottom
-                padding-bottom: 100/$dfs+rem
+        &:last-child
+            padding-bottom: 100/$dfs+rem
         &#no-events, &#history-full
             margin: 0
             padding: 150/$dfs+rem 0
