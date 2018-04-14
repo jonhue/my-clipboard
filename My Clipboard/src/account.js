@@ -35,7 +35,7 @@ class Account {
         if (this.pro) {
             return 5;
         } else {
-            return History.limit;
+            return History.limit();
         }
     }
 

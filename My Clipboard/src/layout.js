@@ -1,5 +1,7 @@
 import Clipboard from './clipboard';
 
+let barTop = $('section#bar').offset().top;
+
 class Layout {
 
     constructor(account) {
@@ -13,37 +15,28 @@ class Layout {
         this._account = val;
     }
 
-    get barTop() {
-        return $('section#bar').offset().top;
-    }
-
     renderHistory() {
         $('section#history .item').remove();
-        if ( this.account.history.items.length > 0 ) {
-            this.account.history.items.forEach(( entry, i ) => {
-                $('section#history').append('<div class="item" id=' + i + '><p class="time">' + entry._date + '</p><p class="large">' + entry._text + '</p></div>');
+        this.account.history.items.forEach(( entry, i ) => {
+            if ( i <= this.account.limit ) {
+                $('section#history').append('<div class="item" id=' + i + '><p class="time">' + entry._date + '</p><p class="large" data-text="' + entry._text + '">' + entry._text + '</p></div>');
                 let item = $('section#history .item#' + i + ' p.large');
                 if ( item.text().length > 300 ) {
                     let text = item.text();
                     text = text.substr(0,300) + '...';
                     item.text(text);
                 };
-            });
-            $('section#history p.large').click(() => {
-                this.copyToClipboard();
-            });
-            if (this.account.pro) {
-                $('#more-arrow').hide();
-            } else {
-                $('#more-arrow').show();
-            };
-            // $('section#history .item:first-child').addClass('active');
-            // $('#clipboard-icon').removeClass('shaking cleared');
-            // $('#clipboard-icon').addClass('cleared');
-        } else {
-            $('section#history').prepend('<div class="item" id="no-events"><p class="large">Start using your clipboard (CTRL+C) ...</p></div>');
+            }
+        });
+        $('section#history p.large').click(() => {
+            this.copyToClipboard();
+        });
+        if (this.account.pro) {
             $('#more-arrow').hide();
-        }
+        } else {
+            $('#more-arrow').show();
+        };
+        this.lastItemActive();
     }
 
     checkFeatures() {
@@ -83,10 +76,13 @@ class Layout {
         $('#clipboard-icon').addClass('cleared');
         $('section#history .item').removeClass('active');
     }
+    clipboardUncleared() {
+        $('#clipboard-icon').removeClass('cleared shaking');
+    }
 
     openClipboard() {
         Clipboard.read((text) => {
-            $('section#show-clipboard #textarea').text(text);
+            $('section#show-clipboard #textarea').text(text || 'Your clipboard is empty! o_o');
             $('section#show-clipboard').addClass('show');
             setTimeout(() => {
                 $('section#show-clipboard #textarea').focus();
@@ -102,17 +98,18 @@ class Layout {
         $('#layout-wrapper').removeClass('hidden');
     }
 
-    copyToClipboard() {
-        Clipboard.write($(this).closest('div').prop('id'));
+    copyToClipboard(text) {
+        Clipboard.write(text);
         this.showMessage('copied');
     }
 
     lastItemActive() {
-        $('section#history .item:first-child').addClass('active');
+        $('section#history .item#0').addClass('active');
+        this.clipboardUncleared();
     }
 
     fixBar() {
-        if ( $(window).scrollTop() > this.barTop ) {
+        if ( $(window).scrollTop() > barTop ) {
             if ($('nav').hasClass('show')) {
                 $('section#bar').css({ position: 'fixed', top: '0', width: '50%' });
             } else {
@@ -124,12 +121,12 @@ class Layout {
     }
 
     transformBar() {
-        if ( $(window).scrollTop() < this.barTop - 1 ) {
+        if ( $(window).scrollTop() < barTop - 1 ) {
             $('header').removeClass('dark');
             $('#bar').removeClass('dark');
             $('#down').removeClass('hide');
             $('#up').addClass('hide');
-        } else if ( $(window).scrollTop() > this.barTop - 1 ) {
+        } else if ( $(window).scrollTop() > barTop - 1 ) {
             $('header').addClass('dark');
             $('#bar').addClass('dark');
             $('#down').addClass('hide');
@@ -143,7 +140,7 @@ class Layout {
     }
 
     down() {
-        $('html, body').stop().animate({ 'scrollTop':  this.barTop }, 350, 'swing');
+        $('html, body').stop().animate({ 'scrollTop':  barTop }, 350, 'swing');
     }
     up() {
         $('html, body').stop().animate({ 'scrollTop':  0 }, 350, 'swing');
@@ -282,8 +279,8 @@ class Layout {
             layout.closeResume();
         });
 
-        $('section#history p.large').click(() => {
-            layout.copyToClipboard();
+        $('section#history p.large').click(function() {
+            layout.copyToClipboard($(this).data('text'));
         });
 
         $('#show-clipboard-open, nav .show-clipboard-open').click(() => {

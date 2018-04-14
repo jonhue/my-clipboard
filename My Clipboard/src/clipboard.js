@@ -7,7 +7,7 @@ class Clipboard {
                 callback(text);
             });
         } else {
-            callback('Your clipboard is empty! o_o');
+            callback(null);
         }
     }
 
