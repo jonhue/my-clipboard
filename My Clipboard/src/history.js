@@ -5,7 +5,7 @@ class History {
 
     constructor(account) {
         this._account = account;
-        this._items = [];
+        this._items = new Array();
         account.app.addLocalSetting( 'historyItems', JSON.stringify(this._items) );
     }
 
@@ -50,7 +50,9 @@ class History {
                         this.account.layout.clipboardCleared();
                     } else {
                         if (this.items.length == History.limit) {
-                            this.items.pop();
+                            let items = this.items
+                            items.pop();
+                            this.items = items;
                         }
                         new Entry( this, text );
                     }
@@ -64,7 +66,7 @@ class History {
     static init(account) {
         let items = JSON.parse(account.app.localSettings('historyItems')),
             history = new History(account);
-        if ( items === Array && items.length > 0 ) {
+        if ( items.length > 0 ) {
             items.forEach((entry) => {
                 new Entry( history, entry.text, entry.date );
             });

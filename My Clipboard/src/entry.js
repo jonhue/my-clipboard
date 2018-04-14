@@ -1,20 +1,14 @@
 class Entry {
 
     constructor( history, text, date = new Date() ) {
-        this._history = history;
         this._text = text;
         this._date = date;
-        this._history.items.unshift(this);
-        if (this._history.account.layout) {
-            this._history.account.layout.renderHistory();
+        let items = history.items;
+        items.unshift(this);
+        history.items = items;
+        if (history.account.layout) {
+            history.account.layout.renderHistory();
         }
-    }
-
-    get history() {
-        return this._history;
-    }
-    set history(val) {
-        this._history = val;
     }
 
     get text() {
