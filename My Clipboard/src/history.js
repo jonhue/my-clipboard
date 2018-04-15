@@ -59,13 +59,13 @@ class History {
     }
 
     static init(account) {
-        let items = [],
-            history = new History(account);
+        let items = [];
         if (account.app.localSettings('historyItems')) {
-            let items = JSON.parse(account.app.localSettings('historyItems'));
+            items = JSON.parse(account.app.localSettings('historyItems'));
         }
+        let history = new History(account);
         if ( items.length > 0 ) {
-            items.slice().reverse().forEach((entry) => {
+            items.reverse().forEach((entry) => {
                 new Entry( history, entry._text, entry._date );
             });
         } else {
@@ -84,7 +84,7 @@ class History {
     }
 
     static limit() {
-        return 10;
+        return 250;
     }
 
 }

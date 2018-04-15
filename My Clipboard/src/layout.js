@@ -18,7 +18,7 @@ class Layout {
     renderHistory() {
         $('section#history .item').remove();
         this.account.history.items.forEach(( entry, i ) => {
-            if ( i <= this.account.limit ) {
+            if ( i < this.account.limit ) {
                 $('section#history').append('<div class="item" id=' + i + '><p class="time">' + entry._date + '</p><p class="large" data-text="' + entry._text + '">' + entry._text + '</p></div>');
                 let item = $('section#history .item#' + i + ' p.large');
                 if ( item.text().length > 300 ) {
@@ -28,8 +28,9 @@ class Layout {
                 };
             }
         });
-        $('section#history p.large').click(() => {
-            this.copyToClipboard();
+        let layout = this;
+        $('section#history .item p.large').click(function() {
+            layout.copyToClipboard($(this).data('text'));
         });
         if (this.account.pro) {
             $('#more-arrow').hide();
@@ -279,7 +280,7 @@ class Layout {
             layout.closeResume();
         });
 
-        $('section#history p.large').click(function() {
+        $('section#history .item p.large').click(function() {
             layout.copyToClipboard($(this).data('text'));
         });
 
