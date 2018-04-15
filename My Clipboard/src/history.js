@@ -6,7 +6,7 @@ class History {
     constructor(account) {
         this._account = account;
         this._items = [];
-        account.app.addLocalSetting( 'historyItems', JSON.stringify(this._items) );
+        account.app.addRoamingSetting( 'historyItems', JSON.stringify(this._items) );
     }
 
     get account() {
@@ -17,8 +17,8 @@ class History {
     }
 
     get items() {
-        if (this.account.app.localSettings('historyItems')) {
-            this._items = JSON.parse(this.account.app.localSettings('historyItems'));
+        if (this.account.app.roamingSettings('historyItems')) {
+            this._items = JSON.parse(this.account.app.roamingSettings('historyItems'));
         } else {
             this._items = [];
         }
@@ -26,7 +26,7 @@ class History {
     }
     set items(val) {
         this._items = val;
-        this.account.app.addLocalSetting( 'historyItems', JSON.stringify(this._items) );
+        this.account.app.addRoamingSetting( 'historyItems', JSON.stringify(this._items) );
     }
 
     ping() {
@@ -60,8 +60,8 @@ class History {
 
     static init(account) {
         let items = [];
-        if (account.app.localSettings('historyItems')) {
-            items = JSON.parse(account.app.localSettings('historyItems'));
+        if (account.app.roamingSettings('historyItems')) {
+            items = JSON.parse(account.app.roamingSettings('historyItems'));
         }
         let history = new History(account);
         if ( items.length > 0 ) {

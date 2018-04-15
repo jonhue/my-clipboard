@@ -74,7 +74,7 @@ class Layout {
         }, 750);
     }
     clipboardCleared() {
-        $('#clipboard-icon').addClass('cleared');
+        $('#clipboard-icon').addClass('cleared shaking');
         $('section#history .item').removeClass('active');
     }
     clipboardUncleared() {
