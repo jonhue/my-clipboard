@@ -1,12 +1,11 @@
-import Clipboard from './clipboard';
+﻿import Clipboard from './clipboard';
 import Entry from './entry';
 
 class History {
 
     constructor(account) {
         this._account = account;
-        this._items = [];
-        account.app.addRoamingSetting( 'historyItems', JSON.stringify(this._items) );
+        this.items = [];
     }
 
     get account() {
@@ -17,16 +16,31 @@ class History {
     }
 
     get items() {
+        let itemIds = [];
         if (this.account.app.roamingSettings('historyItems')) {
-            this._items = JSON.parse(this.account.app.roamingSettings('historyItems'));
-        } else {
-            this._items = [];
+            itemIds = JSON.parse(this.account.app.roamingSettings('historyItems'));
         }
-        return this._items;
+        let items = [];
+        itemIds.forEach((entryId) => {
+            if (this.account.app.roamingSettings(JSON.stringify(entryId))) {
+                items.push(JSON.parse(this.account.app.roamingSettings(JSON.stringify(entryId))));
+            }
+        });
+        this._items = itemIds;
+        return items;
     }
     set items(val) {
         this._items = val;
         this.account.app.addRoamingSetting( 'historyItems', JSON.stringify(this._items) );
+    }
+    addItem(val) {
+        this.account.app.addRoamingSetting( JSON.stringify(val.id), JSON.stringify(val) );
+        let itemIds = [];
+        if (this.account.app.roamingSettings('historyItems')) {
+            itemIds = JSON.parse(this.account.app.roamingSettings('historyItems'));
+        }
+        itemIds.unshift(val.id);
+        this.items = itemIds;
     }
 
     ping() {
@@ -59,14 +73,20 @@ class History {
     }
 
     static init(account) {
-        let items = [];
+        let itemIds = [],
+            items = [];
         if (account.app.roamingSettings('historyItems')) {
-            items = JSON.parse(account.app.roamingSettings('historyItems'));
+            itemIds = JSON.parse(account.app.roamingSettings('historyItems'));
         }
+        itemIds.forEach((entryId) => {
+            if (account.app.roamingSettings(JSON.stringify(entryId))) {
+                items.unshift(JSON.parse(account.app.roamingSettings(JSON.stringify(entryId))));
+            }
+        });
         let history = new History(account);
         if ( items.length > 0 ) {
-            items.reverse().forEach((entry) => {
-                new Entry( history, entry._text, entry._date );
+            items.forEach((entry) => {
+                new Entry( history, entry._text, entry._date, entry._id );
             });
         } else {
             new Entry(history);
@@ -76,8 +96,9 @@ class History {
     }
 
     reset() {
-        delete this;
+        this.account.app.addRoamingSetting( 'entryId', 0 )
         let history = new History(this.account);
+        delete this;
         new Entry(history);
         history.ping();
         return history;

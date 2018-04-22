@@ -1,14 +1,26 @@
-class Entry {
+﻿class Entry {
 
-    constructor( history, text = 'Click to copy me. (Example)', date = renderDate(new Date()) ) {
+    constructor( history, text = 'Click to copy me. (Example)', date = renderDate(new Date()), id = null ) {
+        if (id) {
+            this._id = id;
+        } else {
+            if (history.account.app.roamingSettings('entryId')) {
+                this._id = parseInt(history.account.app.roamingSettings('entryId')) + 1;
+            } else {
+                this._id = 1;
+            }
+        }
+        history.account.app.addRoamingSetting( 'entryId', this._id );
         this._text = text;
         this._date = date;
-        let items = history.items;
-        items.unshift(this);
-        history.items = items;
+        history.addItem(this);
         if (history.account.layout) {
             history.account.layout.renderHistory();
         }
+    }
+
+    get id() {
+        return this._id;
     }
 
     get text() {
