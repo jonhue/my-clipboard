@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="https://user-images.githubusercontent.com/13420273/35914502-c2fabd18-0c03-11e8-8e9c-656e6b8b6336.png" width="76">
+	<img src="https://store-images.s-microsoft.com/image/apps.34641.14244558422593350.36212117-0d59-47e1-9595-c81a5c3b83ea.b5f9e660-b5b6-42f1-9ea8-74f62e038740?w=180&h=180&q=60" width="76">
 	<h1>My Clipboard</h1>
 	<h5>Making your clipboard work for you </h4>
 	<br>
